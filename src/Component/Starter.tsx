@@ -41,6 +41,24 @@ export default function Starter() {
         console.log((event.target as HTMLInputElement).value);
     }
 
+    const [age, setAge] = useState<number>(-1);
+    const handleAgeChange = (a: number) => {
+        setAge(a as number);
+        console.log("set: ", afterEach);
+    }
+
+    const [height, setHeight] = useState<number>(-1);
+    const handleHeightChange = (h: number) => {
+        setHeight(h as number);
+        console.log("set: ", h);
+    }
+
+    const [weight, setWeight] = useState<number>(-1);
+    const handleWeightChange = (w: number) => {
+        setWeight(w as number);
+        console.log("set: ", w);
+    }
+
     const [nationality, setNationality] = React.useState('');
     const handleNationalityChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         setNationality(event.target.value as string);
