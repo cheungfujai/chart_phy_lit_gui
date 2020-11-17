@@ -76,6 +76,7 @@ export default function Starter() {
     return (
         <Box color="text.primary" style={{ padding: "20px", }}>
             <img src={Ipla} alt="Ipla" style={{ paddingBottom: "50px", height:"80px", margin: "auto", display: "block", alignItems: "center"}} />
+            
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Gender</Typography>
             <RadioGroup aria-label="gender" value={gender} onChange={handleGenderChange} style={{ padding: "10px" }}>
                 <FormControlLabel value="female" control={<Radio />} label="Female" />
