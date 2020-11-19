@@ -1,10 +1,23 @@
-import React, { Component, useState } from 'react';
+import React, { Children, Component, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import { Button,FormControl,RadioGroup,FormControlLabel,FormLabel,Radio } from '@material-ui/core';
 
 /// richard 2020-11-19
 
+const MContext = React.createContext([]as any);
+
+
+const Provider = ({children}) => {
+    const [value, setValue] = React.useState<any []>([null,null,null,null]as any);
+
+    return (
+        <MContext.Provider value={{value,setValue}}>
+            {children}
+        </MContext.Provider>
+    )
+
+}
 const NextPageButton = ()=>(
     <div>
     <Button variant="contained" color="primary" size="large" 
@@ -23,28 +36,32 @@ export const columnAttributeList:string[] = [
 
 
 const rowQuestionList:string[]=[
-    "q1","q2","q3","q4","q5","q6","q7","q8"
+    "q1","q2","q3","q4"
 ];
 
 const RadioButtonRow = ({rowQuestion,rowIndex})=>{
-    const [selectedValue, setSelectedValue] = React.useState<string|null>(null);
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSelectedValue(event.target.value);
-        console.log(event.target.value);
-      };
+
+    const {value,setValue} = React.useContext(MContext);
+
     return (
         <tr>
-        <td>{rowQuestion}</td>
-        {columnAttributeList.map((item,index)=>(
-        <td key={`row-${rowIndex}-${index}`}>
-            <Radio
-                checked={selectedValue === item}
-                onChange={handleChange}
-                value={item}
-            />
-        </td>
+
+       <td >{rowQuestion}</td>
+        
+        {columnAttributeList.map((item,colIndex)=>(
+                <td key={`row-${rowIndex}-${colIndex}`}>
+                <Radio
+                    checked={value[rowIndex] === item}
+                    onChange={(e)=>{
+                        setValue(value.map((it,idx)=>idx===rowIndex?e.target.value:it));
+                    }}
+                    value={item}
+                />
+            </td>
+            
         )
         )}
+            
         </tr>
     )
 }
@@ -56,13 +73,13 @@ const RadioQuestionnaireTemplate = () =>{
             <thead>
                 <tr>
                 <td width="150"></td>
-                {columnAttributeList.map((item,index)=>(<td width="200" key={`col-title-${index}`}>{item}</td>))}
+                {columnAttributeList.map((item,colIndex)=>(<td width="200" key={`col-title-${colIndex}`}>{item}</td>))}
                 </tr>
             </thead>
             <tbody>
                 {
-                    rowQuestionList.map((item,index)=>(
-                        <RadioButtonRow key={`row-${index}`} rowQuestion={item} rowIndex={index}/>
+                    rowQuestionList.map((item,rowIndex)=>(
+                        <RadioButtonRow key={`row-${rowIndex}`} rowQuestion={item} rowIndex={rowIndex}/>
                     ))
                 }
             </tbody>
@@ -75,14 +92,26 @@ const RadioQuestionnaireTemplate = () =>{
     )
 };
 
+const APIsender = () => {
+    const {value,setValue} = React.useContext(MContext);
+    console.log(value);            
+    return (
+        <>
+        </>
+    )
+}
 export default function Page5() {
     const nextPage = () => {
     }
-    
+
     return (
         <Box color="text.primary" style={{ padding: "20px", }}>
+            <Provider>
+            
             <RadioQuestionnaireTemplate />
             <NextPageButton  />
+            <APIsender />
+            </Provider>
         </Box>
 
         
