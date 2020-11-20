@@ -1,28 +1,28 @@
 import React, { Children, Component, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
-import { Button,FormControl,RadioGroup,FormControlLabel,FormLabel,Radio } from '@material-ui/core';
+import { Button, FormControl, RadioGroup, FormControlLabel, FormLabel, Radio } from '@material-ui/core';
+
+import Ipla from '../media/Ipla.jpg';
 
 /// richard 2020-11-19
 
-const MContext = React.createContext([]as any);
-
+const MContext = React.createContext([] as any);
 
 const Provider = ({children}) => {
-    const [value, setValue] = React.useState<any []>([null,null,null,null]as any);
+    const [value, setValue] = React.useState<any []>([null,null,null,null,null,null,null,null,null,null,null,null]as any);
 
     return (
-        <MContext.Provider value={{value,setValue}}>
-            {children}
-        </MContext.Provider>
+        <MContext.Provider value={{value,setValue}}> {children} </MContext.Provider>
     )
-
 }
-const NextPageButton = ()=>(
+
+const NextPageButton = () => (
     <div>
-    <Button variant="contained" color="primary" size="large" 
-        style={{ margin: "auto", display: "block", alignItems: "center",marginBottom:'20px',marginTop:'10px' }}
-        onClick={()=>{}} > Next </Button>
+        <Button variant="contained" color="primary" size="large" 
+            style={{ margin: "auto", display: "block", alignItems: "center",marginBottom:'20px',marginTop:'10px' }}
+            onClick={()=>{}} > Next 
+        </Button>
     </div>
 );
 
@@ -115,12 +115,18 @@ export default function Page5() {
     const nextPage = () => {
     }
 
+    const history = useHistory();
+    const toPage3OnClick = () => {
+        history.push('/Page6');
+    }
+
     return (
         <Box color="text.primary" style={{ padding: "20px", }}>
             <Provider>
-            
+            <img src={Ipla} alt="Ipla" style={{ paddingBottom: "50px", height:"80px", margin: "auto", display: "block", alignItems: "center"}} />
             <RadioQuestionnaireTemplate />
-            <NextPageButton  />
+            <Button variant="contained" color="primary" size="large" style={{ margin: "auto", display: "block", alignItems: "center"}}
+                onClick = {toPage3OnClick} > Next </Button>
             <APIsender />
             </Provider>
         </Box>
