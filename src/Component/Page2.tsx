@@ -27,7 +27,7 @@ export default function Page2() {
         console.log(value);
     }
 
-    const educationFormLabelList = ["Secondary 3" ,"HKDSE222222 (Secondary 6)", "Foundation degree","Bachelor's degree", "Master's degree","Doctorate's degree" ];
+    const educationFormLabelList = ["Secondary 3" ,"HKDSE3333 (Secondary 6)", "Foundation degree","Bachelor's degree", "Master's degree","Doctorate's degree" ];
     const maritalStatusFormLabelList = ["Married", "Widowed", "Divorced", "Separated", "Separated", "Never married"];
     const activityFormLabelList = ["Jogging", "Fitness", "Individual sports", "Racket sports", "Team sports", "Water sports","Other"];
 
