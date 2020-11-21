@@ -29,10 +29,4 @@ jobs:
           heroku_api_key: b09052d4-978f-4513-8461-dc49db9d5199
           heroku_app_name: "chart-phy-lit-gui" #Must be unique in Heroku
           heroku_email: "devcommunity2020@gmail.com"
-        
-      - name: Install Packages
-        run: yarn install
-        
-      - name: Start Server
-        run: yarn start
-      
+
