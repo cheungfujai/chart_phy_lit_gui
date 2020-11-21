@@ -4,10 +4,15 @@ export interface IPage2Form  {
     activity: string
 }
 // handleRadioState:<P extends keyof IPage2Form>(prop: P,value:IPage2Form[P])
+
+export interface  IRadioTextComponent{
+    questionTitle:string,
+}
 export interface IRadioFormComponent {
     formLabelList: string[], value:string, handleRadioState:(value:string)=>void
 }
 
 export interface IRadioForm extends IRadioFormComponent{
-    questionTitleString:string,
+    questionTitle:string,
 }
+

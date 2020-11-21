@@ -22,12 +22,12 @@ export default function Page2() {
     // }
     const [education,setEducation] = useState<string>("");
     const handleEducationChange = (value:string) :void=> {
-        setActivity(value);
+        setEducation(value);
         console.log(value);
     }
     const [maritalStatus,setMaritalStatus] = useState<string>("");
     const handleMaritalStatusChange = (value:string) => {
-        setActivity(value);
+        setMaritalStatus(value);
         console.log(value);
     }
 
@@ -39,20 +39,21 @@ export default function Page2() {
 
     const educationFormLabelList = ["Secondary 3" ,"HKDSE (Secondary 6)", "Foundation degree","Bachelor's degree", "Master's degree","Doctorate's degree" ];
     const maritalStatusFormLabelList = ["Married", "Widowed", "Divorced", "Separated", "Separated", "Never married"];
-    const activityFormLabelList = ["Jogging", "Fitness", "Individual sports", "Racket sports", "Racket sports", "Team sports", "Water sports","Other"];
+    const activityFormLabelList = ["Jogging", "Fitness", "Individual sports", "Racket sports", "Team sports", "Water sports","Other"];
 
     return (
         <Box color="text.primary" style={{ padding: "20px", }}>
             <img src={Ipla} alt="Ipla" style={{ paddingBottom: "50px", height:"80px", margin: "auto", display: "block", alignItems: "center"}} />
 
             <RadioForm 
-                questionTitleString={"Marital Status"} 
+                questionTitle={"Marital Status"} 
                 value={maritalStatus} 
                 handleRadioState={handleMaritalStatusChange}
-                formLabelList={educationFormLabelList} /> 
-            <RadioForm questionTitleString={"Education"} value={education} handleRadioState={handleEducationChange} formLabelList={maritalStatusFormLabelList} /> 
-            <RadioForm questionTitleString={"Activity"} value={activity} handleRadioState={handleActivityChange} formLabelList={activityFormLabelList} /> 
-            <ButtonNext pageNumber={"/Page2"} />
+                formLabelList={educationFormLabelList} 
+                /> 
+            <RadioForm questionTitle={"Education"} value={education} handleRadioState={handleEducationChange} formLabelList={maritalStatusFormLabelList} /> 
+            <RadioForm questionTitle={"Activity"} value={activity} handleRadioState={handleActivityChange} formLabelList={activityFormLabelList} /> 
+            <ButtonNext pageNumber={"/Page3"} />
         </Box>
     );
 }
