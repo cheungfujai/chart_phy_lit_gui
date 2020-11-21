@@ -16,18 +16,18 @@ const columnAttributeList:string[] = [
 
 
 const rowQuestionList:string[]=[
-    "I am usually at ease engaging in physcial activity in some indoor and outdoor physical activities.",
-    "I can appreciate options and respond cratively and imaginatively in challenging physcial activity enviroments.",
-    "I comfortable applying movement patterns and more complex skills and techniques to a range of physical activities.",
-    "I can describe movements I that I am working on , suggesting where I am being successful, and targets that I coulld work towards in the future.",
-    "I am determined to challenge myslef in a range of physcial activity enviroments.",
-    "I am confident exploring a range of activities in different settings, with the confidence that I can respond to the demands they make on me.",
-    "I want to be physically active because I enjoy it.",
-    "I am rarely able to move effectively in different physical activity enviroments.",
-    "I want to be physically active regularly because it is important to me.",
-    "Physical activity is a secure part of my life pattern.",
-    "I take steps to avoid physcial activity.",
-    "I can effectively apply complex movement patterns, skills and techniques within challenging physcial activity envrioments.",
+    /* 37 */ "I am usually at ease engaging in physcial activity in some indoor and outdoor physical activities.",
+    /* 38 */ "I can appreciate options and respond cratively and imaginatively in challenging physcial activity enviroments.",
+    /* 39 */ "I comfortable applying movement patterns and more complex skills and techniques to a range of physical activities.",
+    /* 40 */ "I can describe movements I that I am working on , suggesting where I am being successful, and targets that I coulld work towards in the future.",
+    /* 41 */ "I am determined to challenge myslef in a range of physcial activity enviroments.",
+    /* 42 */ "I am confident exploring a range of activities in different settings, with the confidence that I can respond to the demands they make on me.",
+    /* 43 */ "I want to be physically active because I enjoy it.",
+    /* 44 */ "I am rarely able to move effectively in different physical activity enviroments.",
+    /* 45 */ "I want to be physically active regularly because it is important to me.",
+    /* 46 */ "Physical activity is a secure part of my life pattern.",
+    /* 47 */ "I take steps to avoid physcial activity.",
+    /* 48 */ "I can effectively apply complex movement patterns, skills and techniques within challenging physcial activity envrioments.",
 ];
 
 

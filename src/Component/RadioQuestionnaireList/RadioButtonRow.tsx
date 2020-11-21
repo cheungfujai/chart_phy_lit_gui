@@ -1,8 +1,8 @@
 import { Radio } from '@material-ui/core';
 import React from 'react';
-import { PRadioButtonRow, PRadioQuestionnaireTemplate } from '../../types/RadioQuestionnaireList';
+import { IRadioButtonRow, IRadioQuestionnaireTemplate } from '../../types/RadioQuestionnaireList';
 
-const RadioButtonRow = ({columnAttributeList,rowQuestion,rowIndex,value,setValue}:PRadioButtonRow)=>{
+const RadioButtonRow = ({columnAttributeList,rowQuestion,rowIndex,value,setValue}:IRadioButtonRow)=>{
 
 
     return (
@@ -28,7 +28,7 @@ const RadioButtonRow = ({columnAttributeList,rowQuestion,rowIndex,value,setValue
 }
 
 
-const RadioQuestionnaireTemplate = ({rowQuestionList,columnAttributeList,value,setValue}:PRadioQuestionnaireTemplate) =>{
+const RadioQuestionnaireTemplate = ({rowQuestionList,columnAttributeList,value,setValue}:IRadioQuestionnaireTemplate) =>{
 
     return (
         <>

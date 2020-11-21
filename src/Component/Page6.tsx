@@ -16,18 +16,18 @@ const columnAttributeList:string[] = [
 
 
 const rowQuestionList:string[]=[
-    "I am confident that I will enjoy taking part in physical activity.",
-    "I work very hard when engaging in sustain my regular physical activity.",
-    "I work hard when taking part in physical activity.",
-    "I generally apply myself during physical activity.",
-    "I can analyse all aspects of movement that I am involved in, describing stengths and weaknessess and acting on strategies for improvement.",
-    "I am motivated to be physically active most days.",
-    "I am becoming more aware of and able to adapt to the damands presented by varied physical activity environemnts.",
-    "I am certain that engaging in physical acctivity will be rewarding and enhance my self-confidence.",
-    "I can work individually and with others, in a range of settings, creating and refining movement sequences in varied physical activities",
-    "I seek out opportunities to challenge myself in a range of physical activity environments individually and/or with others",
-    "I can evaluate my own and others movements, identifying what is successful and how to make progress towards future targets.",
-    "I can identify movements that I am working on and can suggest what I need to improve.",
+    /* 13 */ "I am confident that I will enjoy taking part in physical activity.",
+    /* 14 */ "I work very hard when engaging in sustain my regular physical activity.",
+    /* 15 */ "I work hard when taking part in physical activity.",
+    /* 16 */ "I generally apply myself during physical activity.",
+    /* 17 */ "I can analyse all aspects of movement that I am involved in, describing stengths and weaknessess and acting on strategies for improvement.",
+    /* 18 */ "I am motivated to be physically active most days.",
+    /* 19 */ "I am becoming more aware of and able to adapt to the damands presented by varied physical activity environemnts.",
+    /* 20 */ "I am certain that engaging in physical acctivity will be rewarding and enhance my self-confidence.",
+    /* 21 */ "I can work individually and with others, in a range of settings, creating and refining movement sequences in varied physical activities",
+    /* 22 */ "I seek out opportunities to challenge myself in a range of physical activity environments individually and/or with others",
+    /* 23 */ "I can evaluate my own and others movements, identifying what is successful and how to make progress towards future targets.",
+    /* 24 */ "I can identify movements that I am working on and can suggest what I need to improve.",
 ];
 
 
