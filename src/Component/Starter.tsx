@@ -10,19 +10,12 @@ import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-
-import { useHistory } from 'react-router-dom';
-
-import Ipla from '../media/Ipla.jpg';
 import ButtonNext from './ButtonNext';
+
+
 
 export default function Starter() {
 
-    const history = useHistory();
-    const toPage2OnClick = () => {
-        history.push('/Page2');
-    }
 
     const [motivation, setMotivation] = useState(0);
     const [confidence, setConfidence] = useState(0);
@@ -42,19 +35,15 @@ export default function Starter() {
         console.log((event.target as HTMLInputElement).value);
     }
 
-    const [age, setAge] = useState<number>(-1);
-    const handleAgeChange = (a: number) => {
-        setAge(a as number);
-        console.log("set: ", afterEach);
-    }
+    const [age, setAge] = useState<number>();
 
-    const [height, setHeight] = useState<number>(-1);
+    const [height, setHeight] = useState<number>();
     const handleHeightChange = (h: number) => {
         setHeight(h as number);
         console.log("set: ", h);
     }
 
-    const [weight, setWeight] = useState<number>(-1);
+    const [weight, setWeight] = useState<number>();
     const handleWeightChange = (w: number) => {
         setWeight(w as number);
         console.log("set: ", w);
@@ -84,13 +73,13 @@ export default function Starter() {
             </RadioGroup>
 
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Age</Typography>
-            <TextField id="outlined-basic" label="Age" variant="outlined" />
+            <TextField id="outlined-basic" label="Age" type="number" variant="outlined" defaultValue={age} onChange={(e)=>setAge(+e.target.value)} />
 
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Height</Typography>
-            <TextField id="outlined-basic" label="Height" variant="outlined" />
+            <TextField id="outlined-basic" label="Height"type="number"  variant="outlined" defaultValue={height} onChange={(e)=>setHeight(+e.target.value)}/>
 
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Weight</Typography>
-            <TextField id="outlined-basic" label="Weight" variant="outlined" />
+            <TextField id="outlined-basic" label="Weight"type="number"  variant="outlined" defaultValue={weight} onChange={(e)=>setWeight(+e.target.value)}/>
 
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Nationality</Typography>
             <FormControl variant="outlined" fullWidth>
