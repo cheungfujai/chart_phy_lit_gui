@@ -10,16 +10,7 @@ import ButtonNext from '../../src/Component/ButtonNext';
 import { IPage2Form } from '../types/RadioForm';
 
 export default function Page2() {
-    
-    // const [radioState, setRadioState] = useState<IPage2Form>({
-    //     education: "",
-    //     maritalStatus:"",
-    //     activity:"",
-    // });
-    
-    // const handleRadioState = <P extends keyof IPage2Form>(prop: P,value:IPage2Form[P]) => {
-    //     setRadioState({...radioState,[prop]:value})
-    // }
+
     const [education,setEducation] = useState<string>("");
     const handleEducationChange = (value:string) :void=> {
         setEducation(value);
