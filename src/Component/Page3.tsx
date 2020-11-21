@@ -10,7 +10,7 @@ import ButtonNext from './ButtonNext';
 
 export default function Page3() {
 
-    const [activityDay, setActivityDay] = useState<number>(-1);
+    const [activityDay, setActivityDay] = useState<number>(3);
     const handleActivityDay = (event: any, days: number | number[]) => {
         setActivityDay(days as number);
         console.log("set: ", days);
@@ -37,7 +37,7 @@ export default function Page3() {
             <Typography id="discrete-slider" gutterBottom> During the last 7 days, on how many days did you do any kinds of physical activities? </Typography>
             <Slider 
                 style={{width: "200", paddingTop: "30px"}}
-                defaultValue={3}
+                defaultValue={activityDay}
                 getAriaValueText={valuetext}
                 onChange={handleActivityDay}
                 aria-labelledby="continuous-slider"

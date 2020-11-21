@@ -13,6 +13,7 @@ import Page9 from './Component/Page9';
 import Page10 from './Component/Page10';
 import Result from './Component/Result';
 
+
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Logo from './Component/Logo';
 
