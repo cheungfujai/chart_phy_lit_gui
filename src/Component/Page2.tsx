@@ -21,7 +21,6 @@ export default function Page2() {
         setMaritalStatus(value);
         console.log(value);
     }
-
     const [activity,setActivity] = useState<string>("");
     const handleActivityChange = (value:string) => {
         setActivity(value);
