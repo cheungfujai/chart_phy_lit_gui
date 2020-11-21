@@ -5,16 +5,10 @@ import Button from '@material-ui/core/Button';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 
-import { useHistory } from 'react-router-dom';
 
-import Ipla from '../media/Ipla.jpg';
+import ButtonNext from './ButtonNext';
 
 export default function Page3() {
-
-    const history = useHistory();
-    const toPage4OnClick = () => {
-        history.push('/Page4');
-    }
 
     const [activityDay, setActivityDay] = useState<number>(-1);
     const handleActivityDay = (event: any, days: number | number[]) => {
@@ -39,7 +33,6 @@ export default function Page3() {
 
     return (
         <Box color="text.primary" style={{ padding: "20px", }}>
-            <img src={Ipla} alt="Ipla" style={{ paddingBottom: "50px", height: "80px", margin: "auto", display: "block", alignItems: "center" }} />
 
             <Typography id="discrete-slider" gutterBottom> During the last 7 days, on how many days did you do any kinds of physical activities? </Typography>
             <Slider 
@@ -55,10 +48,8 @@ export default function Page3() {
                 max={7}
             />
 
-            <p style={{ padding: "10px" }} />
-            <Button variant="contained" color="primary" size="large" style={{ margin: "auto", display: "block", alignItems: "center" }}
-                onClick={toPage4OnClick} > Next </Button>
-            <p style={{ paddingTop: "20px" }} />
+            <ButtonNext pageNumber={"/Page4"} />
+            
         </Box>
     );
 }

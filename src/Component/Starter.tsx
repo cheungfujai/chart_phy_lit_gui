@@ -15,6 +15,7 @@ import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
 
 import Ipla from '../media/Ipla.jpg';
+import ButtonNext from './ButtonNext';
 
 export default function Starter() {
 
@@ -75,7 +76,6 @@ export default function Starter() {
 
     return (
         <Box color="text.primary" style={{ padding: "20px", }}>
-            <img src={Ipla} alt="Ipla" style={{ paddingBottom: "50px", height:"80px", margin: "auto", display: "block", alignItems: "center"}} />
             
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Gender</Typography>
             <RadioGroup aria-label="gender" value={gender} onChange={handleGenderChange} style={{ padding: "10px" }}>
@@ -130,10 +130,7 @@ export default function Starter() {
                 </Select>
             </FormControl>
             
-            <p style={{padding: "10px"}} />
-            <Button variant="contained" color="primary" size="large" style={{ margin: "auto", display: "block", alignItems: "center"}}
-                onClick = {toPage2OnClick} > Next </Button>
-            <p style={{paddingTop: "20px"}} />
+            <ButtonNext pageNumber={"/Page2"} />
 
         </Box>
     );

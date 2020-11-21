@@ -1,10 +1,8 @@
 import React, { Component, useState } from 'react';
 import Box from '@material-ui/core/Box';
-import { useHistory } from 'react-router-dom';
-import { Button,  } from '@material-ui/core';
 
-import Ipla from '../media/Ipla.jpg';
 import RadioQuestionnaireTemplate from './RadioQuestionnaireList/RadioButtonRow';
+import ButtonNext from './ButtonNext';
 
 const columnAttributeList:string[] = [
     "Not at all like me",
@@ -33,22 +31,15 @@ const rowQuestionList:string[]=[
 
 export default function Page6() {
 
-
-    const history = useHistory();
-    const toPage3OnClick = () => {
-        history.push('/Page7');
-    }
     const [value, setValue] = React.useState<any []>([null,null,null,null,null,null,null,null,null,null,null,null,] as any);
     return (
         <Box color="text.primary" style={{ padding: "20px", }}>
-            <img src={Ipla} alt="Ipla" style={{ paddingBottom: "50px", height:"80px", margin: "auto", display: "block", alignItems: "center"}} />
             <RadioQuestionnaireTemplate 
                 rowQuestionList={rowQuestionList} 
                 columnAttributeList={columnAttributeList}
                 value={value}
                 setValue={setValue} />
-            <Button variant="contained" color="primary" size="large" style={{ margin: "auto", display: "block", alignItems: "center"}}
-                onClick = {toPage3OnClick} > Next </Button>
+            <ButtonNext pageNumber={"/Page7"} />
         </Box>
 
         

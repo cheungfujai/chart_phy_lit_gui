@@ -14,10 +14,12 @@ import Page10 from './Component/Page10';
 import Result from './Component/Result';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Logo from './Component/Logo';
 
 export default function App() {
 	return (
 		<Router>
+			<Logo />
 			<Switch>
 				<Route exact path="/" component={Welcome} />
 				<Route path="/Starter" component={Starter} />

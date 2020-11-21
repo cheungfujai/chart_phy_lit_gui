@@ -2,12 +2,9 @@ import React, { Component, useState } from 'react';
 
 import Box from '@material-ui/core/Box';
 
-import { useHistory } from 'react-router-dom';
-
-import Ipla from '../media/Ipla.jpg';
 import RadioForm from './RadioForm';
 import ButtonNext from '../../src/Component/ButtonNext';
-import { IPage2Form } from '../types/RadioForm';
+
 
 export default function Page2() {
 
@@ -27,14 +24,12 @@ export default function Page2() {
         console.log(value);
     }
 
-    const educationFormLabelList = ["Secondary 3" ,"HKDSE444 (Secondary 6)", "Foundation degree","Bachelor's degree", "Master's degree","Doctorate's degree" ];
-    const maritalStatusFormLabelList = ["Married", "Widowed", "Divorced", "Separated", "Separated", "Never married"];
+    const educationFormLabelList = ["Secondary 3" ,"HKDSE (Secondary 6)", "Foundation degree","Bachelor's degree", "Master's degree","Doctorate's degree" ];
+    const maritalStatusFormLabelList = ["Married", "Widowed", "Divorced", "Separated", "Never married"];
     const activityFormLabelList = ["Jogging", "Fitness", "Individual sports", "Racket sports", "Team sports", "Water sports","Other"];
 
     return (
         <Box color="text.primary" style={{ padding: "20px", }}>
-            <img src={Ipla} alt="Ipla" style={{ paddingBottom: "50px", height:"80px", margin: "auto", display: "block", alignItems: "center"}} />
-
             <RadioForm 
                 questionTitle={"Marital Status"} 
                 value={maritalStatus} 
