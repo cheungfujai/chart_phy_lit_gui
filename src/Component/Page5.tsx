@@ -1,10 +1,11 @@
 import React, { Children, Component, useState } from 'react';
 import Box from '@material-ui/core/Box';
 
-import RadioQuestionnaireTemplate from './RadioQuestionnaireList/RadioButtonRow';
-import ButtonNext from './ButtonNext';
+import RadioQuestionnaireTemplate from './RadioQuestionnaireList/RadioQuestionnaireTemplate';
+import ChartPhyButton from './ChartPhyButton';
+import RadioQuestionnairePage from './RadioQuestionnaireList/RadioQuestionnairePage';
 
-/// richard 2020-11-19
+
 
 const columnAttributeList:string[] = [
     "Not at all like me",
@@ -33,17 +34,8 @@ const rowQuestionList:string[]=[
 
 export default function Page5() {
 
-    const [value, setValue] = React.useState<any []>([null,null,null,null,null,null,null,null,null,null,null,null,] as any);
-    return (
-        <Box color="text.primary" style={{ padding: "20px", }}>
-            <RadioQuestionnaireTemplate 
-                rowQuestionList={rowQuestionList} 
-                columnAttributeList={columnAttributeList}
-                value={value}
-                setValue={setValue} />
-            <ButtonNext pageNumber={"/Page6"} />
-        </Box>
 
-        
-    );
+    return(
+        <RadioQuestionnairePage />
+    )
 }

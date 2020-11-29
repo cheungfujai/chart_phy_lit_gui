@@ -5,14 +5,18 @@ import Button from '@material-ui/core/Button';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 
-
-import ButtonNext from './ButtonNext';
+import ChartPhyButtonGroup from './ChartPhyButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../store/reducer';
+import { setCandidate } from '../store/actions/QuestionActions';
 
 export default function Page3() {
+    const dispatch = useDispatch();
+    const {candidate} = useSelector((state: RootState) => state.question);
 
-    const [activityDay, setActivityDay] = useState<number>(3);
+    const [daysActivity, setdaysActivity] = useState<number>(candidate.daysActivity);
     const handleActivityDay = (event: any, days: number | number[]) => {
-        setActivityDay(days as number);
+        setdaysActivity(days as number);
         console.log("set: ", days);
     }
 
@@ -31,13 +35,20 @@ export default function Page3() {
         { value: 7, label: '7', },
     ];
 
+    const onPageChange = () => {
+        const newCandidate = {
+            ...candidate,
+            daysActivity: daysActivity,
+        }
+        dispatch(setCandidate(newCandidate));
+    }
     return (
         <Box color="text.primary" style={{ padding: "20px", }}>
 
             <Typography id="discrete-slider" gutterBottom> During the last 7 days, on how many days did you do any kinds of physical activities? </Typography>
             <Slider 
                 style={{width: "200", paddingTop: "30px"}}
-                defaultValue={activityDay}
+                defaultValue={daysActivity}
                 getAriaValueText={valuetext}
                 onChange={handleActivityDay}
                 aria-labelledby="continuous-slider"
@@ -48,7 +59,7 @@ export default function Page3() {
                 max={7}
             />
 
-            <ButtonNext pageNumber={"/Page4"} />
+            <ChartPhyButtonGroup  page={3} onClick={onPageChange} />
             
         </Box>
     );

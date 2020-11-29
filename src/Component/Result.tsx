@@ -1,10 +1,18 @@
-import React, { Component, useState } from 'react';
+import React, {useEffect}from 'react';
 import Box from '@material-ui/core/Box';
+import ChartPhyButtonGroup from './ChartPhyButton';
 
 export default function Result() {
+
+
+    /// [POST] /v1/result/
+    useEffect(()=>{
+
+    })
+
     return (
         <Box color="text.primary" style={{ padding: "20px", }}>
-            Result
+            <h1>Result</h1>
         </Box>
     );
 }

@@ -13,11 +13,11 @@ const RadioButtonRow = ({columnAttributeList,rowQuestion,rowIndex,value,setValue
         {columnAttributeList.map((item,colIndex)=>(
                 <td key={`row-${rowIndex}-${colIndex}`}>
                 <Radio
-                    checked={value[rowIndex] === item}
+                    checked={+value[rowIndex] === colIndex+1}
                     onChange={(e)=>{
-                        setValue(value.map((it,idx)=>idx===rowIndex?e.target.value:it));
+                        setValue(value.map((it,idx)=>idx===rowIndex?+e.target.value:it));
                     }}
-                    value={item}
+                    value={colIndex+1}
                 />
             </td> 
         )

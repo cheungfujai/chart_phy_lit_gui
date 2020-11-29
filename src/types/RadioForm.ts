@@ -1,10 +1,3 @@
-export interface IPage2Form  {
-    education: string,
-    maritalStatus: string,
-    activity: string
-}
-// handleRadioState:<P extends keyof IPage2Form>(prop: P,value:IPage2Form[P])
-
 export interface  IRadioTextComponent{
     questionTitle:string,
 }

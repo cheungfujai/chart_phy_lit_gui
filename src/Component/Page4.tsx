@@ -2,23 +2,27 @@ import React, { Component, useState } from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import Ipla from '../media/Ipla.jpg';
-import ButtonNext from './ButtonNext';
 import RadioForm from './RadioForm';
+import ChartPhyButtonGroup from './ChartPhyButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../store/reducer';
+import { setCandidate } from '../store/actions/QuestionActions';
 
 export default function Page4() {
+    const dispatch = useDispatch();
+    const {candidate} = useSelector((state: RootState) => state.question);
 
-    const [sportParticipation, setSportParticipation] = useState("null");
+    const [sportParticipation, setSportParticipation] = useState(candidate.sportLevel);
     const handleSportParticipationChange = (value:string) => {
         setSportParticipation(value);
     }
 
-    const [employment, setEmployment] = useState("null");
+    const [employment, setEmployment] = useState(candidate.employment);
     const handleEmploymentChange = (value:string) => {
         setEmployment(value);
     }
 
-    const [yearlyFamilyIncome, setYearlyFamilyIncome] = useState("null");
+    const [yearlyFamilyIncome, setYearlyFamilyIncome] = useState(candidate.yearlyFamilyIncome);
     const handleYearlyFamilyIncomeChange = (value:string) => {
         setYearlyFamilyIncome(value);
     }
@@ -36,6 +40,16 @@ export default function Page4() {
         "$50,000 - $59,999","$60,000 - $69,999","$70,000 - $79,999","$80,000 - $89,999","$90,000 - $99,999",
         "$100,000 - $149,999","More than $150,000"
     ]
+
+    const onPageChange = () => {
+        const newCandidate = {
+            ...candidate,
+            sportLevel:sportParticipation,
+            employment:employment,
+            yearlyFamilyIncome:yearlyFamilyIncome
+        }
+        dispatch(setCandidate(newCandidate));
+    }
     return (
         <Box color="text.primary" style={{ padding: "20px", }}>
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>How much time did you usually spend doing any kinds of physical activities on one of those days (in hours and minutes, e.g. 2 hours and 30 minutes)?</Typography>
@@ -62,7 +76,7 @@ export default function Page4() {
                 formLabelList={yearlyFamilyIncomeFormLabelList} 
                 /> 
 
-            <ButtonNext pageNumber={"/Page5"} />
+            <ChartPhyButtonGroup  page={4} onClick={onPageChange} />
         </Box>
     );
 }

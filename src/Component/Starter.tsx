@@ -10,18 +10,24 @@ import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
-import ButtonNext from './ButtonNext';
+import ChartPhyButton from './ChartPhyButton';
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCandidate } from '../store/actions/QuestionActions';
+import { RootState } from '../store/reducer';
 
 
 
 export default function Starter() {
-
+    const history = useHistory();
+    const dispatch = useDispatch();
+    const {candidate} = useSelector((state: RootState) => state.question);
 
     const [motivation, setMotivation] = useState(0);
     const [confidence, setConfidence] = useState(0);
     const [competence, setCompetence] = useState(0);
     const [knowledge, setKnowledge] = useState(0);
-
+  
     const disPlayDimensionMark = () => {
         console.log("motivation: ", motivation);
         console.log("confidence: ", confidence);
@@ -29,32 +35,32 @@ export default function Starter() {
         console.log("knowledge: ", knowledge);
     }
 
-    const [gender, setGender] = useState("null");
+    const [gender, setGender] = useState(candidate.gender);
     const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setGender((event.target as HTMLInputElement).value);
         console.log((event.target as HTMLInputElement).value);
     }
 
-    const [age, setAge] = useState<number>();
+    const [age, setAge] = useState<number>(candidate.age);
 
-    const [height, setHeight] = useState<number>();
+    const [height, setHeight] = useState<number>(candidate.height);
     const handleHeightChange = (h: number) => {
         setHeight(h as number);
         console.log("set: ", h);
     }
 
-    const [weight, setWeight] = useState<number>();
+    const [weight, setWeight] = useState<number>(candidate.weight);
     const handleWeightChange = (w: number) => {
         setWeight(w as number);
         console.log("set: ", w);
     }
 
-    const [nationality, setNationality] = React.useState('');
+    const [nationality, setNationality] = React.useState(candidate.nationality);
     const handleNationalityChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         setNationality(event.target.value as string);
     };
 
-    const [ethnicity, setEthnicity] = React.useState('');
+    const [ethnicity, setEthnicity] = React.useState(candidate.ethnicity);
     const handleEthnicityChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         setEthnicity(event.target.value as string);
     };
@@ -62,6 +68,21 @@ export default function Starter() {
     React.useEffect(() => {
         disPlayDimensionMark();
     }, []);
+
+    const nextPage = () => {
+        
+        const newCandidate = {
+            ...candidate,
+            gender:gender,
+            weight:weight,
+            height:height,
+            nationality:nationality,
+            ethnicity:ethnicity
+        }
+        console.log(newCandidate);
+        dispatch(setCandidate(newCandidate));
+        history.push("/Page2");
+    }
 
     return (
         <Box color="text.primary" style={{ padding: "20px", }}>
@@ -119,7 +140,8 @@ export default function Starter() {
                 </Select>
             </FormControl>
             
-            <ButtonNext pageNumber={"/Page2"} />
+            
+            <ChartPhyButton type="next" page={1} onClick={nextPage} />
 
         </Box>
     );
