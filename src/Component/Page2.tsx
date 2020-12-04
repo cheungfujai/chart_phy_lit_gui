@@ -8,7 +8,8 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
 import { setCandidate } from '../store/actions/QuestionActions';
-import ChartPhyButton from './dist/ChartPhyButton';
+
+
 
 
 export default function Page2() {
