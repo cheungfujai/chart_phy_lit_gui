@@ -4,11 +4,9 @@ import Box from '@material-ui/core/Box';
 
 import RadioForm from './RadioForm';
 import ChartPhyButtonGroup from './ChartPhyButton';
-import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
 import { setCandidate } from '../store/actions/QuestionActions';
-import ChartPhyButton from './dist/ChartPhyButton';
 
 
 export default function Page2() {
