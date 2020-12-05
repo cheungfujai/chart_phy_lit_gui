@@ -9,6 +9,8 @@ import { RootState } from '../store/reducer';
 import { setCandidate } from '../store/actions/QuestionActions';
 
 
+
+
 export default function Page2() {
     const dispatch = useDispatch();
     const {candidate} = useSelector((state: RootState) => state.question);
