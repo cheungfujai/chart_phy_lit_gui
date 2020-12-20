@@ -15,10 +15,11 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCandidate } from '../store/actions/QuestionActions';
 import { RootState } from '../store/reducer';
-
+import { useForm } from 'react-hook-form';
 
 
 export default function Starter() {
+    const { register, handleSubmit } = useForm({mode:'onBlur'});
     const history = useHistory();
     const dispatch = useDispatch();
     const {candidate} = useSelector((state: RootState) => state.question);
@@ -80,6 +81,7 @@ export default function Starter() {
             ethnicity:ethnicity
         }
         console.log(newCandidate);
+        handleSubmit(newCandidate);
         dispatch(setCandidate(newCandidate));
         history.push("/Page2");
     }
@@ -94,13 +96,13 @@ export default function Starter() {
             </RadioGroup>
 
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Age</Typography>
-            <TextField id="outlined-basic" label="Age" type="number" variant="outlined" defaultValue={age} onChange={(e)=>setAge(+e.target.value)} />
+            <TextField id="outlined-basic" name="Age" label="Age" type="number" variant="outlined" defaultValue={age} inputRef={register({required: true})} onChange={(e)=>setAge(+e.target.value)} />
 
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Height</Typography>
-            <TextField id="outlined-basic" label="Height"type="number"  variant="outlined" defaultValue={height} onChange={(e)=>setHeight(+e.target.value)}/>
+            <TextField id="outlined-basic" name="Height" label="Height"type="number"  variant="outlined" defaultValue={height} inputRef={register({required: true})} onChange={(e)=>setHeight(+e.target.value)}/>
 
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Weight</Typography>
-            <TextField id="outlined-basic" label="Weight"type="number"  variant="outlined" defaultValue={weight} onChange={(e)=>setWeight(+e.target.value)}/>
+            <TextField id="outlined-basic" name="Weight" label="Weight"type="number"  variant="outlined" defaultValue={weight} inputRef={register({required: true})} onChange={(e)=>setWeight(+e.target.value)}/>
 
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Nationality</Typography>
             <FormControl variant="outlined" fullWidth>
@@ -109,7 +111,9 @@ export default function Starter() {
                     labelId="demo-simple-select-outlined-label"
                     value={nationality}
                     onChange={handleNationalityChange}
+                    name="Nationality"
                     label="Nationality"
+                    inputRef={register({required: true})}
                 >
                     <MenuItem value={10}>Brazil</MenuItem>
                     <MenuItem value={20}>China</MenuItem>
@@ -129,6 +133,7 @@ export default function Starter() {
                     value={ethnicity}
                     onChange={handleEthnicityChange}
                     label="Ethnicity"
+                    inputRef={register({required: true})}
                 >
                     <MenuItem value={10}>American Indian or Alaska Native</MenuItem>
                     <MenuItem value={20}>Asian</MenuItem>

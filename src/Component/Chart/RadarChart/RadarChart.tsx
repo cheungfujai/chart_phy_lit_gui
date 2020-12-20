@@ -54,8 +54,8 @@ export default function RadarChart() {
                     ],
                     // result border width
                     borderWidth: 1,
-                    pointRadius: 40,
-                    pointHoverRadius: 50,
+                    pointRadius: 4,
+                    pointHoverRadius: 5,
 
                 }]
             },
