@@ -74,12 +74,11 @@ export default function Welcome() {
             try{
                 const question:Question[] = await getAllQuestion();
                 // const question:Question[] = exampleQuestion;
-                dispatch(initQuestionAndAnswer(question));
                 console.log(question);
+                dispatch(initQuestionAndAnswer(question));       
             }catch(err){
                 console.log(err);
             }
-
         }
         fetchData();
     },[dispatch]);
