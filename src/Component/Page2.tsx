@@ -7,6 +7,7 @@ import ChartPhyButtonGroup from './ChartPhyButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
 import { setCandidate } from '../store/actions/QuestionActions';
+import { Candidate } from '../types/store/QuestionStore';
 
 
 
@@ -16,7 +17,7 @@ export default function Page2() {
     const {candidate} = useSelector((state: RootState) => state.question);
 
     const [education,setEducation] = useState<string>(candidate.education);
-    const [maritalStatus,setMaritalStatus] = useState<string>(candidate.martialStatus);
+    const [maritalStatus,setMaritalStatus] = useState<string>(candidate.maritalStatus);
     const [activity,setActivity] = useState<string>(candidate.activity);
 
     const educationFormLabelList = ["Secondary 3" ,"HKDSE (Secondary 6)", "Foundation degree","Bachelor's degree", "Master's degree","Doctorate's degree" ];
@@ -25,8 +26,7 @@ export default function Page2() {
 
 
     const onPageChange = () => {
-    
-        const newCandidate = {
+        const newCandidate:Candidate = {
             ...candidate,
             education: education,
             maritalStatus: maritalStatus,
