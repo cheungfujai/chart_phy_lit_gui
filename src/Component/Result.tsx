@@ -1,19 +1,18 @@
-import React, {useEffect}from 'react';
-import Box from '@material-ui/core/Box';
-import ChartPhyButtonGroup from './ChartPhyButton';
+import React, { Component, useEffect } from 'react';
+import { Button, Grid } from '@material-ui/core';
 import RadarChart from '../Component/Chart/RadarChart/RadarChart';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/reducer';
+
 
 export default function Result() {
-
-    /// [POST] /v1/result/
+    const {profile} = useSelector((state: RootState) => state.question);
     useEffect(()=>{
-
+        localStorage.clear();
     })
-
-    return (
-        <Box color="text.primary" style={{ padding: "20px", }}>
-            <h1>Result</h1>
-            <RadarChart />
-        </Box>        
+    return (   
+        <>
+        <RadarChart receivedScore={profile}/>
+        </>
     );
 }

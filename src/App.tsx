@@ -11,8 +11,12 @@ import Result from './Component/Result';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Logo from './Component/Logo';
+import PageEnd from './Component/PageEnd';
 
-export const route = ["/","/Starter","/Page2","/Page3","/Page4","/Page5","/Result"];
+export const route = ["/","/Starter","/Page2","/Page3","/Page4","/Page5","/PageEnd","/Result"];
+export enum routes {
+	"/","/Starter","/Page2","/Page3","/Page4","/Page5","/PageEnd","/Result"
+}
 
 
 
@@ -27,6 +31,7 @@ export default function App() {
 				<Route path="/Page3" component={Page3} />
 				<Route path="/Page4" component={Page4} />
 				<Route path="/Page5" component={Page5} />
+				<Route path="/PageEnd" component={PageEnd} />
 				<Route path="/Result" component={Result} />
 			</Switch>
 		</Router>

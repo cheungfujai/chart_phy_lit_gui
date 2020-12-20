@@ -11,7 +11,7 @@ import { useHistory } from 'react-router-dom';
 import { RootState } from '../../store/reducer';
 import Grid from '@material-ui/core/Grid';
 import { Button } from '@material-ui/core';
-import {route} from  '../../App';
+import { route, routes } from '../../App';
 
 
 const columnAttributeList:string[] = [
@@ -62,15 +62,15 @@ const RadioQuestionnairePage  = () => {
         onPageStateChange(nextPage);
         console.log(nextPage);
         if( type==="previous" && page === 0  ){
-            history.push(route[Math.max(globalPage-1,0)]);
+            history.push(route[Math.max(routes['/Page4'],0)]);
         }
         if( type==="next" && end === question.length){
-            ///TODO add alert for user for final checking 
-            history.push(route[Math.min(globalPage+1,route.length)]);
+            history.push(route[Math.min(globalPage+1,routes['/PageEnd'])]);
         }
 
     }
 
+   
     return (
         <Box color="text.primary" style={{ padding: "20px", }}>
             <RadioQuestionnaireTemplate 

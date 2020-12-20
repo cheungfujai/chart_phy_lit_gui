@@ -1,5 +1,5 @@
-import { Question, Candidate } from '../../types/store/QuestionStore';
-import { SET_INIT_QUESTION, SET_ANSWER, SET_CANDIDATE } from '../../types/store/QuestionAction';
+import { Question, Candidate, Profile } from '../../types/store/QuestionStore';
+import { SET_INIT_QUESTION, SET_ANSWER, SET_CANDIDATE, SET_PROFILE } from '../../types/store/QuestionAction';
 
 
 export const setInitQuestion = (question:Question[]) => {
@@ -31,5 +31,12 @@ export const setCandidate = (candidate:Candidate) => {
     return {
         type: SET_CANDIDATE,
         payload: candidate
+    }
+}
+
+export const setProfile = (profile:Profile) => {
+    return {
+        type: SET_PROFILE,
+        payload: profile
     }
 }

@@ -1,8 +1,9 @@
-import { Candidate, Question } from './QuestionStore';
+import { Candidate, Profile, Question } from './QuestionStore';
 
 export const SET_CANDIDATE = 'SET_CANDIDATE';
 export const SET_INIT_QUESTION = 'SET_QUESTION_DATA';
 export const SET_ANSWER = 'SET_ANSWER';
+export const SET_PROFILE= 'SET_PROFILE';
 
 
 // Actions
@@ -22,5 +23,9 @@ interface SetAnswerAction {
     payload:number[]|null[]
 }
 
+interface SetProfileAction {
+    type: typeof SET_PROFILE
+    payload: Profile
+}
 
-export type QuestionAction =    SetCandidateAction | SetInitQuestionAction | SetAnswerAction  ;
+export type QuestionAction =    SetCandidateAction | SetInitQuestionAction | SetAnswerAction | SetProfileAction ;

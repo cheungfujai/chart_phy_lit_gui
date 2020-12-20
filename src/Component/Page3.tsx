@@ -1,7 +1,6 @@
 import React, { Component, useState } from 'react';
 
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 
@@ -9,6 +8,7 @@ import ChartPhyButtonGroup from './ChartPhyButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
 import { setCandidate } from '../store/actions/QuestionActions';
+import { routes } from '../App';
 
 export default function Page3() {
     const dispatch = useDispatch();
@@ -59,7 +59,7 @@ export default function Page3() {
                 max={7}
             />
 
-            <ChartPhyButtonGroup  page={3} onClick={onPageChange} />
+            <ChartPhyButtonGroup  page={routes['/Page3']} onClick={onPageChange} />
             
         </Box>
     );

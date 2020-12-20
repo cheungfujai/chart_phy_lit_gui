@@ -15,6 +15,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCandidate } from '../store/actions/QuestionActions';
 import { RootState } from '../store/reducer';
+import { routes } from '../App';
 
 
 
@@ -22,18 +23,6 @@ export default function Starter() {
     const history = useHistory();
     const dispatch = useDispatch();
     const {candidate} = useSelector((state: RootState) => state.question);
-
-    const [motivation, setMotivation] = useState(0);
-    const [confidence, setConfidence] = useState(0);
-    const [competence, setCompetence] = useState(0);
-    const [knowledge, setKnowledge] = useState(0);
-  
-    const disPlayDimensionMark = () => {
-        console.log("motivation: ", motivation);
-        console.log("confidence: ", confidence);
-        console.log("competence: ", competence);
-        console.log("knowledge: ", knowledge);
-    }
 
     const [gender, setGender] = useState(candidate.gender);
     const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,25 +44,23 @@ export default function Starter() {
         console.log("set: ", w);
     }
 
-    const [nationality, setNationality] = React.useState(candidate.nationality);
+    const [nationality, setNationality] = React.useState<string>(candidate.nationality);
     const handleNationalityChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         setNationality(event.target.value as string);
     };
 
-    const [ethnicity, setEthnicity] = React.useState(candidate.ethnicity);
+    const [ethnicity, setEthnicity] = React.useState<string>(candidate.ethnicity);
     const handleEthnicityChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         setEthnicity(event.target.value as string);
     };
 
-    React.useEffect(() => {
-        disPlayDimensionMark();
-    }, []);
 
     const nextPage = () => {
         
         const newCandidate = {
             ...candidate,
             gender:gender,
+            age:age,
             weight:weight,
             height:height,
             nationality:nationality,
@@ -81,7 +68,7 @@ export default function Starter() {
         }
         console.log(newCandidate);
         dispatch(setCandidate(newCandidate));
-        history.push("/Page2");
+        history.push(routes['/Page2']);
     }
 
     return (
@@ -141,7 +128,7 @@ export default function Starter() {
             </FormControl>
             
             
-            <ChartPhyButton type="next" page={1} onClick={nextPage} />
+            <ChartPhyButton type="next" page={routes['/Starter']} onClick={nextPage} />
 
         </Box>
     );

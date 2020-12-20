@@ -1,29 +1,33 @@
 import React, { useEffect } from 'react';
 import * as Chart from 'chart.js';
 import classes from './RadarChart.module.css';
+import { Profile } from '../../../types/store/QuestionStore';
 
-// received score
-const receivedScore: object = {
-    motivation: 10,
-    confidence: 20,
-    physicalCompetence: 55,
-    knowledgeAndUnderstand: 100  
-};
-
-// change receivedScore from object into array
-const finalScore: number[] = [];  
-const updatedScore = (oriScore:object) =>{
-    for (let item in oriScore) {
-        finalScore.push(oriScore[item]);
-    }
-};      
-updatedScore(receivedScore);
 
 
 //Hiding Chart Legend:
 Chart.defaults.global.legend.display = false;
 
-export default function RadarChart() {     
+const updateScore = (oriScore:Profile):number[] => {
+    const finalScore: number[] = [];  
+    for (let item in oriScore) {
+        finalScore.push(oriScore[item]);
+    }
+    return finalScore;
+}
+
+export default  function RadarChart  ({receivedScore}){   
+    // received score
+    // const receivedScore: Profile = {
+    //     motivation: 10,
+    //     confidence: 20,
+    //     competence: 55,
+    //     knowledge: 100  
+    // };
+
+    // change receivedScore from object into array
+    const finalScore: number[] = updateScore(receivedScore);
+
     useEffect(() =>{
         let ctx = document.getElementById('myChart');
         let myChart = new Chart(ctx, {
@@ -54,8 +58,8 @@ export default function RadarChart() {
                     ],
                     // result border width
                     borderWidth: 1,
-                    pointRadius: 40,
-                    pointHoverRadius: 50,
+                    pointRadius: 4,
+                    pointHoverRadius: 5,
 
                 }]
             },

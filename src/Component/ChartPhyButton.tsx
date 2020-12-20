@@ -18,7 +18,6 @@ function ChartPhyButton ({page,type, onClick}:IChartPhyButton) {
         onClick();        
         const nextPageIndex =  (type==="next") ?  Math.min(page+1,route.length-1) : Math.max(page-1,0);
         history.push(route[nextPageIndex]);
-
     }
     return (
         <Button variant="contained" color="primary" size="large" style={{ margin: "auto", display: "block", alignItems: "center"}}

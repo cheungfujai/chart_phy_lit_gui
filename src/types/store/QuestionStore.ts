@@ -7,9 +7,14 @@ export interface QuestionState {
     answer:number[],
     questionPerPage:number,
     candidate:Candidate,
+    profile:Profile,
 }
 
-enum Dimension {
+export type Profile = {
+    [key in Dimension]: number;
+};
+
+export enum Dimension {
     Motivation="motivation",
     Confidence="confidence",
     Competence="competence",
@@ -17,8 +22,10 @@ enum Dimension {
 }
 
 export interface Question {
-    _id :string;
-    title: string;
+    _id :string,
+    title: string,
+    dimension:Dimension,
+    grading:number,
 }
 
 export interface Answer {
@@ -36,6 +43,7 @@ export interface Candidate {
     maritalStatus:string,
     education:string,
     activity:string,
+    durationDaysActivity:string,
     daysActivity:number,
     sportLevel:string,
     employment:string,

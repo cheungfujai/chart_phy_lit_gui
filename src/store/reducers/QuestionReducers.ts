@@ -16,12 +16,18 @@ const initialState: QuestionState = {
         education:"null",
         activity:"null",
         daysActivity:3,
+        durationDaysActivity:"null",
         sportLevel:"null",
         employment:"null",
         yearlyFamilyIncome:"null"
     },
     questionPerPage:12,
-
+    profile:{
+        motivation:0,
+        confidence:0,
+        competence:0,
+        knowledge:0,
+    }
 }
 
 export default (state = initialState,action :QuestionAction) => {

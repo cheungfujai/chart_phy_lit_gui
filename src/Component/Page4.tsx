@@ -7,22 +7,25 @@ import ChartPhyButtonGroup from './ChartPhyButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
 import { setCandidate } from '../store/actions/QuestionActions';
+import { routes } from '../App';
 
 export default function Page4() {
     const dispatch = useDispatch();
     const {candidate} = useSelector((state: RootState) => state.question);
 
-    const [sportParticipation, setSportParticipation] = useState(candidate.sportLevel);
+    const [durationDaysActivity, setDurationDaysActivity] = useState<string>(candidate.durationDaysActivity);
+
+    const [sportParticipation, setSportParticipation] = useState<string>(candidate.sportLevel);
     const handleSportParticipationChange = (value:string) => {
         setSportParticipation(value);
     }
 
-    const [employment, setEmployment] = useState(candidate.employment);
+    const [employment, setEmployment] = useState<string>(candidate.employment);
     const handleEmploymentChange = (value:string) => {
         setEmployment(value);
     }
 
-    const [yearlyFamilyIncome, setYearlyFamilyIncome] = useState(candidate.yearlyFamilyIncome);
+    const [yearlyFamilyIncome, setYearlyFamilyIncome] = useState<string>(candidate.yearlyFamilyIncome);
     const handleYearlyFamilyIncomeChange = (value:string) => {
         setYearlyFamilyIncome(value);
     }
@@ -44,6 +47,7 @@ export default function Page4() {
     const onPageChange = () => {
         const newCandidate = {
             ...candidate,
+            durationDaysActivity:durationDaysActivity,
             sportLevel:sportParticipation,
             employment:employment,
             yearlyFamilyIncome:yearlyFamilyIncome
@@ -53,7 +57,13 @@ export default function Page4() {
     return (
         <Box color="text.primary" style={{ padding: "20px", }}>
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>How much time did you usually spend doing any kinds of physical activities on one of those days (in hours and minutes, e.g. 2 hours and 30 minutes)?</Typography>
-            <TextField id="outlined-basic" label="" style={{padding: "20px", paddingBottom: "30px" }} variant="outlined" />
+            <TextField 
+                id="outlined-basic" 
+                defaultValue={durationDaysActivity}
+                onChange={(e)=>setDurationDaysActivity(e.target.value)}
+                style={{padding: "20px", paddingBottom: "30px" }} 
+                variant="outlined" 
+            />
         
             <RadioForm 
                 questionTitle={"Highest level of sports participation"} 
@@ -76,7 +86,7 @@ export default function Page4() {
                 formLabelList={yearlyFamilyIncomeFormLabelList} 
                 /> 
 
-            <ChartPhyButtonGroup  page={4} onClick={onPageChange} />
+            <ChartPhyButtonGroup  page={routes['/Page4']} onClick={onPageChange} />
         </Box>
     );
 }

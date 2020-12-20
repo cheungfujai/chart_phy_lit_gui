@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
 import { setCandidate } from '../store/actions/QuestionActions';
 import { Candidate } from '../types/store/QuestionStore';
+import { routes } from '../App';
 
 
 
@@ -47,7 +48,7 @@ export default function Page2() {
                 /> 
             <RadioForm questionTitle={"Education"} value={education} handleRadioState={setEducation} formLabelList={maritalStatusFormLabelList} /> 
             <RadioForm questionTitle={"Activity"} value={activity} handleRadioState={setActivity} formLabelList={activityFormLabelList} /> 
-            <ChartPhyButtonGroup  page={2} onClick={onPageChange} />
+            <ChartPhyButtonGroup  page={routes['/Page2']} onClick={onPageChange} />
         </Box>
     );
 }
