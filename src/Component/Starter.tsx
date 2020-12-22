@@ -10,99 +10,97 @@ import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
-import ChartPhyButton from './ChartPhyButton';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCandidate } from '../store/actions/QuestionActions';
 import { RootState } from '../store/reducer';
 import { useForm } from 'react-hook-form';
+import ChartPhyButton from './ChartPhyButton';
 
 
 export default function Starter() {
-    const { register, handleSubmit } = useForm({mode:'onBlur'});
+    const { register, handleSubmit,errors ,trigger} = useForm({mode:'onBlur'});
     const history = useHistory();
     const dispatch = useDispatch();
     const {candidate} = useSelector((state: RootState) => state.question);
 
-    const [motivation, setMotivation] = useState(0);
-    const [confidence, setConfidence] = useState(0);
-    const [competence, setCompetence] = useState(0);
-    const [knowledge, setKnowledge] = useState(0);
-  
-    const disPlayDimensionMark = () => {
-        console.log("motivation: ", motivation);
-        console.log("confidence: ", confidence);
-        console.log("competence: ", competence);
-        console.log("knowledge: ", knowledge);
-    }
-
-    const [gender, setGender] = useState(candidate.gender);
-    const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setGender((event.target as HTMLInputElement).value);
-        console.log((event.target as HTMLInputElement).value);
-    }
-
-    const [age, setAge] = useState<number>(candidate.age);
-
-    const [height, setHeight] = useState<number>(candidate.height);
-    const handleHeightChange = (h: number) => {
-        setHeight(h as number);
-        console.log("set: ", h);
-    }
-
-    const [weight, setWeight] = useState<number>(candidate.weight);
-    const handleWeightChange = (w: number) => {
-        setWeight(w as number);
-        console.log("set: ", w);
-    }
-
     const [nationality, setNationality] = React.useState(candidate.nationality);
+    const [ethnicity, setEthnicity] = React.useState(candidate.ethnicity);
+  
+
+    const [pageObj, setPageObj] = useState(candidate);
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement> ) => {
+        const {name , value } = event.target;
+        setPageObj({
+            ...pageObj,
+            [name]:value
+        })
+    }
     const handleNationalityChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         setNationality(event.target.value as string);
     };
 
-    const [ethnicity, setEthnicity] = React.useState(candidate.ethnicity);
     const handleEthnicityChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         setEthnicity(event.target.value as string);
     };
 
-    React.useEffect(() => {
-        disPlayDimensionMark();
-    }, []);
-
-    const nextPage = () => {
-        
+    const nextPage = () => {        
         const newCandidate = {
             ...candidate,
-            gender:gender,
-            weight:weight,
-            height:height,
+            gender:pageObj.gender,
+            weight:pageObj.weight,
+            height:pageObj.height,
             nationality:nationality,
             ethnicity:ethnicity
         }
-        console.log(newCandidate);
-        handleSubmit(newCandidate);
         dispatch(setCandidate(newCandidate));
         history.push("/Page2");
     }
-
     return (
         <Box color="text.primary" style={{ padding: "20px", }}>
             
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Gender</Typography>
-            <RadioGroup aria-label="gender" value={gender} onChange={handleGenderChange} style={{ padding: "10px" }}>
+            <RadioGroup aria-label="gender"name="gender" value={pageObj.gender} onChange={handleChange} style={{ padding: "10px" }}>
                 <FormControlLabel value="female" control={<Radio />} label="Female" />
                 <FormControlLabel value="male" control={<Radio />} label="Male" />
             </RadioGroup>
 
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Age</Typography>
-            <TextField id="outlined-basic" name="Age" label="Age" type="number" variant="outlined" defaultValue={age} inputRef={register({required: true})} onChange={(e)=>setAge(+e.target.value)} />
+            <TextField 
+                id="outlined-basic"    
+                name="age" label="Age" 
+                type="number" 
+                variant="outlined" 
+                defaultValue={pageObj.age} 
+                inputRef={register({required: true})} 
+                onChange={handleChange} 
+            />
+            {errors.age && <p>this is required</p>}
 
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Height</Typography>
-            <TextField id="outlined-basic" name="Height" label="Height"type="number"  variant="outlined" defaultValue={height} inputRef={register({required: true})} onChange={(e)=>setHeight(+e.target.value)}/>
+            <TextField 
+                id="outlined-basic" 
+                name="height" 
+                label="Height"
+                type="number"  
+                variant="outlined" 
+                defaultValue={pageObj.height} 
+                inputRef={register({required: true})} 
+                onChange={handleChange}
+                />
+            {errors.height && <p>this is required</p>}
 
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Weight</Typography>
-            <TextField id="outlined-basic" name="Weight" label="Weight"type="number"  variant="outlined" defaultValue={weight} inputRef={register({required: true})} onChange={(e)=>setWeight(+e.target.value)}/>
+            <TextField 
+                id="outlined-basic" 
+                name="weight" 
+                label="Weight"
+                type="number"  
+                variant="outlined" 
+                defaultValue={pageObj.weight} 
+                inputRef={register({required: true})} 
+                onChange={handleChange}/>
+            {errors.weight && <p>this is required</p>}
 
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Nationality</Typography>
             <FormControl variant="outlined" fullWidth>
@@ -111,7 +109,7 @@ export default function Starter() {
                     labelId="demo-simple-select-outlined-label"
                     value={nationality}
                     onChange={handleNationalityChange}
-                    name="Nationality"
+                    name="nationality"
                     label="Nationality"
                     inputRef={register({required: true})}
                 >
@@ -123,6 +121,7 @@ export default function Starter() {
                     <MenuItem value={60}>The United Kingdom</MenuItem>
                     <MenuItem value={70}>The United States of America</MenuItem>
                 </Select>
+                {errors.nationality && <p>this is required</p>}
             </FormControl>
 
             <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Ethnicity</Typography>
@@ -144,10 +143,7 @@ export default function Starter() {
                     <MenuItem value={70}>Other</MenuItem>
                 </Select>
             </FormControl>
-            
-            
-            <ChartPhyButton type="next" page={1} onClick={nextPage} />
-
+            <ChartPhyButton content="next" onClick={handleSubmit(nextPage)}/>
         </Box>
     );
 }

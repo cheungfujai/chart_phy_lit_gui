@@ -3,7 +3,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import RadioForm from './RadioForm';
-import ChartPhyButtonGroup from './ChartPhyButton';
+// import ChartPhyButtonGroup from './ChartPhyButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
 import { setCandidate } from '../store/actions/QuestionActions';
@@ -76,7 +76,7 @@ export default function Page4() {
                 formLabelList={yearlyFamilyIncomeFormLabelList} 
                 /> 
 
-            <ChartPhyButtonGroup  page={4} onClick={onPageChange} />
+            {/* <ChartPhyButtonGroup  page={4} onClick={onPageChange} /> */}
         </Box>
     );
 }

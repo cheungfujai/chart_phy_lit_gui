@@ -10,11 +10,11 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 import Ipla from '../media/Ipla.jpg';
-import ChartPhyButton from './ChartPhyButton';
+// import ChartPhyButton from './ChartPhyButton';
 import { useDispatch } from 'react-redux';
 import {  Question } from '../types/store/QuestionStore'
 import { initQuestionAndAnswer } from '../store/actions/QuestionActions';
-import ChartPhyButtonGroup from './ChartPhyButton';
+// import ChartPhyButtonGroup from './ChartPhyButton';
 
 const exampleQuestion:Question[]  = 
 [
@@ -92,7 +92,7 @@ export default function Welcome() {
                 <Typography variant="body2" style={{ padding: "10px" }}> Research and Innovation Committee </Typography>
                 <Typography variant="body2" style={{ padding: "10px", paddingBottom: "30px" }}> International Physical Literacy Association </Typography>
                 {/* <ChartPhyButton type="next" page={0} onClick={nextPage} /> */}
-                <ChartPhyButtonGroup type="next" page={0} onClick={()=>{}}/>
+                {/* <ChartPhyButtonGroup type="next" page={0} onClick={()=>{}}/> */}
             </Box>
     );
 }
