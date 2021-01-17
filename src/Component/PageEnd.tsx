@@ -29,7 +29,7 @@ const PageEnd = () => {
         const profile:Profile = await createProfile(candidate);
         console.log(profile);
 
-        dispatch(setProfile(profile))
+        await dispatch(setProfile(profile))
 
         history.push(route[routes['/Result']]);
     }

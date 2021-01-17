@@ -40,3 +40,4 @@ export const setProfile = (profile:Profile) => {
         payload: profile
     }
 }
+

@@ -17,8 +17,6 @@ import { setCandidate } from '../store/actions/QuestionActions';
 import { RootState } from '../store/reducer';
 import { routes } from '../App';
 
-
-
 export default function Starter() {
     const history = useHistory();
     const dispatch = useDispatch();

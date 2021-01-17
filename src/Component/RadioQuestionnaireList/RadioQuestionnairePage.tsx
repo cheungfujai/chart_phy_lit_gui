@@ -5,14 +5,12 @@ import Box from '@material-ui/core/Box';
 import RadioQuestionnaireTemplate from './RadioQuestionnaireTemplate';
 import ChartPhyButton from '../ChartPhyButton';
 
-
 import { setAnswer } from '../../store/actions/QuestionActions';
 import { useHistory } from 'react-router-dom';
 import { RootState } from '../../store/reducer';
 import Grid from '@material-ui/core/Grid';
 import { Button } from '@material-ui/core';
 import { route, routes } from '../../App';
-
 
 const columnAttributeList:string[] = [
     "Not at all like me",

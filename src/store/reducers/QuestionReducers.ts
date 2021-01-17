@@ -1,4 +1,4 @@
-import { SET_INIT_QUESTION, SET_CANDIDATE, SET_ANSWER, QuestionAction } from '../../types/store/QuestionAction';
+import { SET_INIT_QUESTION, SET_CANDIDATE, SET_ANSWER, SET_PROFILE, QuestionAction } from '../../types/store/QuestionAction';
 import { QuestionState } from "../../types/store/QuestionStore"
 
 
@@ -46,6 +46,11 @@ export default (state = initialState,action :QuestionAction) => {
             return {
                 ...state,
                 answer: action.payload
+            }
+        case SET_PROFILE:
+            return {
+                ...state,
+                profile: action.payload
             }
 
         default:

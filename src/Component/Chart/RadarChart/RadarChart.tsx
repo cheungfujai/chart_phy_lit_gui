@@ -2,21 +2,17 @@ import React, { useEffect } from 'react';
 import * as Chart from 'chart.js';
 import classes from './RadarChart.module.css';
 import { Profile } from '../../../types/store/QuestionStore';
-
-
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../store/reducer';
 
 //Hiding Chart Legend:
 Chart.defaults.global.legend.display = false;
 
-const updateScore = (oriScore:Profile):number[] => {
-    const finalScore: number[] = [];  
-    for (let item in oriScore) {
-        finalScore.push(oriScore[item]);
-    }
-    return finalScore;
+const updateScore = (oriScore:Profile):number[]=>{
+    return Object.values(oriScore);
 }
 
-export default  function RadarChart  ({receivedScore}){   
+export default  function RadarChart  (receivedScore){   
     // received score
     // const receivedScore: Profile = {
     //     motivation: 10,
@@ -26,9 +22,12 @@ export default  function RadarChart  ({receivedScore}){
     // };
 
     // change receivedScore from object into array
-    const finalScore: number[] = updateScore(receivedScore);
+    
 
     useEffect(() =>{
+        console.log(receivedScore);
+        const finalScore: number[] = updateScore(receivedScore.receivedScore);
+        console.log("hi" + finalScore);
         let ctx = document.getElementById('myChart');
         let myChart = new Chart(ctx, {
             type: 'radar',
@@ -43,7 +42,7 @@ export default  function RadarChart  ({receivedScore}){
             //dataset settings
                 datasets: [{
                     label: 'Score',
-                    data: finalScore,
+                    data: finalScore, // [, , ,]
                     backgroundColor: [
                         'rgba(0, 255, 0, 0.5)',
                         'rgba(192, 192, 192, 0.5)',
@@ -69,8 +68,8 @@ export default  function RadarChart  ({receivedScore}){
                     ticks: {
                         min:0,
                         suggestedMin: 15,
-                        suggestedMax: 75,
-                        stepSize: 15,
+                        suggestedMax: 50,
+                        stepSize: 10,
                     },
                     pointLabels: {
                         display: true,

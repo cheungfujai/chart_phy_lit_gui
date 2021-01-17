@@ -8,7 +8,7 @@ import {  Question } from '../types/store/QuestionStore'
 import { initQuestionAndAnswer } from '../store/actions/QuestionActions';
 import ChartPhyButtonGroup from './ChartPhyButton';
 
-import {getAllQuestion} from '../functions/api/question';
+import { getAllQuestion } from '../functions/api/question';
 import { routes, route } from '../App';
 
 // const exampleQuestion:Question[]  = 

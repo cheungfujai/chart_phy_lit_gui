@@ -8,7 +8,9 @@ import { RootState } from '../store/reducer';
 export default function Result() {
     const {profile} = useSelector((state: RootState) => state.question);
     useEffect(()=>{
-        localStorage.clear();
+        
+        console.log(profile);
+        //localStorage.clear();
     })
     return (   
         <>
