@@ -10,7 +10,7 @@ export default function Result() {
     useEffect(()=>{
         
         console.log(profile);
-        //localStorage.clear();
+        localStorage.clear();
     })
     return (   
         <>

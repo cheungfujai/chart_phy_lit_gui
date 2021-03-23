@@ -4,12 +4,12 @@ import baseRequest from './base';
 
 
 
-const createProfile = async (candidate:ICreateCandidateRequest):Promise<Profile> => {
+const createProfile = async (candidate: ICreateCandidateRequest):Promise<Profile> => {
     try{
         console.log(candidate);
-        const result = await baseRequest.post<Profile>('/profile', candidate);
+        const result = await baseRequest.post<Profile>('/profile', JSON.stringify(candidate));
         return result.data;
-    }catch(err){
+    } catch(err){
         throw err;
     }
 }

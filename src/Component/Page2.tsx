@@ -10,9 +10,6 @@ import { setCandidate } from '../store/actions/QuestionActions';
 import { Candidate } from '../types/store/QuestionStore';
 import { routes } from '../App';
 
-
-
-
 export default function Page2() {
     const dispatch = useDispatch();
     const {candidate} = useSelector((state: RootState) => state.question);

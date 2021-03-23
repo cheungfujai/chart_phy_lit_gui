@@ -11,6 +11,7 @@ import { useHistory } from 'react-router-dom';
 import { route, routes } from '../App';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
+import baseRequest from '../functions/api/base';
 
 const PageEnd = () => {
     const questionState = useSelector((state: RootState) => state.question);
@@ -24,12 +25,25 @@ const PageEnd = () => {
         
         const candidate:ICreateCandidateRequest = {
             ...questionState.candidate,
-            title:titleList
+            title: titleList
         }
-        const profile:Profile = await createProfile(candidate);
-        console.log(profile);
 
-        await dispatch(setProfile(profile))
+        const sendCandidate: ICreateCandidateRequest = candidate;
+        let result: any;
+
+        console.log(JSON.stringify(sendCandidate));
+
+        try{
+            result = await baseRequest.post<Profile>('/profile', candidate);
+        } catch (err){
+            throw err;
+        }
+        
+        const profile:Profile = await createProfile(candidate);
+        console.log(result);
+
+        await dispatch(setProfile(profile));
+        //await dispatch(setProfile(result));
 
         history.push(route[routes['/Result']]);
     }
