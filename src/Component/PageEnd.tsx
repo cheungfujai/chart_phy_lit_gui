@@ -43,7 +43,6 @@ const PageEnd = () => {
         console.log(result);
 
         await dispatch(setProfile(profile));
-        //await dispatch(setProfile(result));
 
         history.push(route[routes['/Result']]);
     }
