@@ -33,14 +33,14 @@ const PageEnd = () => {
 
         console.log(JSON.stringify(sendCandidate));
 
-        try{
-            result = await baseRequest.post<Profile>('/profile', candidate);
-        } catch (err){
-            throw err;
-        }
+        // try{
+        //     result = await baseRequest.post<Profile>('/profile', candidate);
+        // } catch (err){
+        //     throw err;
+        // }
         
         const profile:Profile = await createProfile(candidate);
-        console.log(result);
+        // console.log(result);
 
         await dispatch(setProfile(profile));
 
