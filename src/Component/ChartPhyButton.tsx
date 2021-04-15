@@ -3,15 +3,17 @@ import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
 import {route} from '../App';
 import Grid from '@material-ui/core/Grid';
+import { Box } from '@material-ui/core';
 
 
 interface IChartPhyButton{
     type?: "next"|"previous"|"both",
     onClick:()=>void
     page: number,
+    style?: {}
 }
 
-function ChartPhyButton ({page,type, onClick}:IChartPhyButton) {
+function ChartPhyButton ({page,type, onClick, style={}}:IChartPhyButton) {
     const history = useHistory();
 
     const onPageChange = () =>{
@@ -20,7 +22,7 @@ function ChartPhyButton ({page,type, onClick}:IChartPhyButton) {
         history.push(route[nextPageIndex]);
     }
     return (
-        <Button variant="contained" color="primary" size="large" style={{ margin: "auto", display: "block", alignItems: "center"}}
+        <Button variant="outlined" color="primary" size="small" style={{ ...style, marginTop: "32px", marginBottom: "64px", minWidth: "160px", display: "block", alignItems: "center"}}
             onClick = {()=>onPageChange()} > {type} 
         </Button>
     )
@@ -33,16 +35,12 @@ export default function ChartPhyButtonGroup  ({ page, onClick ,type="both"}:ICha
 
     return (
         <>
-        {(type==="next")&&<ChartPhyButton type="next"  page={page} onClick={onClick} />}
+        {(type==="next")&&<ChartPhyButton style={{float:"right"}} type="next"  page={page} onClick={onClick} />}
         {(type==="previous")&&<ChartPhyButton type="previous"  page={page}onClick={onClick} />}
         {(type==="both")&&      
-            <div style={{flexGrow: 1,display:"flex"}}>
-            <Grid item xs={6}>
-                <ChartPhyButton type="previous"page={page} onClick={onClick} />
-            </Grid>
-            <Grid item xs={6}>
-                <ChartPhyButton type="next" page={page} onClick={onClick} />
-             </Grid>
+            <div style={{width:"100%"}}>
+                <ChartPhyButton style={{float:"left"}} type="previous"page={page} onClick={onClick} />
+                <ChartPhyButton style={{float:"right"}} type="next" page={page} onClick={onClick} />
             </div>
         }
         </>

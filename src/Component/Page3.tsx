@@ -3,6 +3,7 @@ import React, { Component, useState } from 'react';
 import Box from '@material-ui/core/Box';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 
 import ChartPhyButtonGroup from './ChartPhyButton';
 import { useDispatch, useSelector } from 'react-redux';
@@ -43,8 +44,7 @@ export default function Page3() {
         dispatch(setCandidate(newCandidate));
     }
     return (
-        <Box color="text.primary" style={{ padding: "20px", }}>
-
+        <Container maxWidth="sm">
             <Typography id="discrete-slider" gutterBottom> During the last 7 days, on how many days did you do any kinds of physical activities? </Typography>
             <Slider 
                 style={{width: "200", paddingTop: "30px"}}
@@ -54,13 +54,13 @@ export default function Page3() {
                 aria-labelledby="continuous-slider"
                 valueLabelDisplay="auto"
                 step={1}
-                marks
+                marks={marks}
                 min={0}
                 max={7}
             />
 
             <ChartPhyButtonGroup  page={routes['/Page3']} onClick={onPageChange} />
             
-        </Box>
+        </Container>
     );
 }

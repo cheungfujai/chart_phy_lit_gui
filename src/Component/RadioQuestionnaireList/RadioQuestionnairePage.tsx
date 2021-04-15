@@ -9,6 +9,7 @@ import { setAnswer } from '../../store/actions/QuestionActions';
 import { useHistory } from 'react-router-dom';
 import { RootState } from '../../store/reducer';
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 import { Button } from '@material-ui/core';
 import { route, routes } from '../../App';
 
@@ -70,31 +71,33 @@ const RadioQuestionnairePage  = () => {
 
    
     return (
-        <Box color="text.primary" style={{ padding: "20px", }}>
+        <Container maxWidth="lg">
             <RadioQuestionnaireTemplate 
                 rowQuestionList={rowQuestionList} 
                 columnAttributeList={columnAttributeList}
                 value={value}
                 setValue={setValue} />
 
-            <h1>Page : {page}</h1>
+            {/* <h1>Page : {page}</h1>
             <h1>Begin: {begin}   End:{end}</h1>
-            <h3>{answer}</h3>
+            <h3>{answer}</h3> */}
 
-            <div style={{flexGrow: 1,display:"flex"}}>
-            <Grid item xs={6}>
-            <Button variant="contained" color="primary" size="large" style={{ margin: "auto", display: "block", alignItems: "center"}}
-            onClick = {()=>onPageChange("previous")} > Previous 
-            </Button>
-            </Grid>
-            <Grid item xs={6}>
-            <Button variant="contained" color="primary" size="large" style={{ margin: "auto", display: "block", alignItems: "center"}}
-            onClick = {()=>onPageChange("next")} > Next 
-            </Button>
-             </Grid>
+            <div style={{width:"100%"}}>
+                <Button 
+                    variant="outlined" color="primary" size="small" 
+                    style={{float:"left", marginTop: "32px", marginBottom: "64px", minWidth: "160px", display: "block", alignItems: "center"}}
+                    onClick = {()=>onPageChange("previous")} > 
+                    Previous 
+                </Button>
+                <Button 
+                    variant="outlined" color="primary" size="small" 
+                    style={{float:"right", marginTop: "32px", marginBottom: "64px", minWidth: "160px", display: "block", alignItems: "center"}}
+                    onClick = {()=>onPageChange("next")} > 
+                    Next 
+                </Button>
             </div>
 
-        </Box>
+        </Container>
  
     ) ;
 

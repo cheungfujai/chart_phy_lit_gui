@@ -10,6 +10,7 @@ import ChartPhyButtonGroup from './ChartPhyButton';
 
 import { getAllQuestion } from '../functions/api/question';
 import { routes, route } from '../App';
+import { Container } from '@material-ui/core';
 
 export default function Welcome() {
 
@@ -38,13 +39,18 @@ export default function Welcome() {
     }
 
     return (
-            <Box >
-                <Typography variant="h6" align="center" gutterBottom style={{ padding: "10px", paddingTop: "20px" }}>Charting Physical Literacy Questionnaire</Typography>
-                <Typography variant="body1" gutterBottom style={{ padding: "10px" }}> First of all, we appreciate you taking the time to complete this survey. The aim of this survey is to chart your physical literacy status. The questions and statements relate to your demographic information and physical activity experiences. This survey could be finished in approximately 15 minutes.</Typography>
-                <Typography variant="body1" gutterBottom style={{ padding: "10px" }}> The survey is conducted anonymously and your responses will only be used for academic purposes. Please be assured that the answers you provide will be treated in strict confidence. In addition, there are no “right” or “wrong” answers. We would like to know how far these statements match your personal view. Please do not leave out any questions. Once again, thank you for all your help and contribution to our research!</Typography>
-                <Typography variant="body2" style={{ padding: "10px" }}> Research and Innovation Committee </Typography>
-                <Typography variant="body2" style={{ padding: "10px", paddingBottom: "30px" }}> International Physical Literacy Association </Typography>
-                <ChartPhyButtonGroup type="next" page={routes['/']} onClick={nextPage}/>
-            </Box>
+        <Container maxWidth="sm">
+            <Typography variant="h5" align="left" gutterBottom style={{ padding: "8px"}}>Charting Physical Literacy Questionnaire</Typography>
+            <Typography variant="body1" gutterBottom style={{ color:"#4a4a4a", textAlign:"justify", padding: "8px" }}> Dear participant, </Typography>
+            <Typography variant="body1" gutterBottom style={{ color:"#4a4a4a", textAlign:"justify", padding: "8px" }}> First of all, we appreciate you taking the time to complete this survey. The aim of this survey is to chart your physical literacy status. The questions and statements relate to your demographic information and physical activity experiences. This survey could be finished in approximately 15 minutes.</Typography>
+            <Typography variant="body1" gutterBottom style={{ color:"#4a4a4a", textAlign:"justify", padding: "8px" }}> The survey is conducted anonymously and your responses will only be used for academic purposes. Please be assured that the answers you provide will be treated in strict confidential. In addition, there are no “right” or “wrong” answers. We would like to know how far these statements match your personal view. Please do not leave out any questions. Once again, thank you for all your help and contribution to our research!</Typography>
+            <Typography variant="body1" style={{ color:"#4a4a4a", padding: "8px", }}>Kind Regards,</Typography>
+            <Typography variant="body1" style={{ color:"#4a4a4a", padding: "8px", }}> 
+                Research and Innovation Committee <br/>
+                International Physical Literacy Association
+            </Typography>
+
+            <ChartPhyButtonGroup type="next" page={routes['/']} onClick={nextPage}/>
+        </Container>
     );
 }

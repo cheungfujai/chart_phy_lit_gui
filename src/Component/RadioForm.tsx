@@ -7,13 +7,13 @@ import { IRadioForm, IRadioFormComponent, IRadioTextComponent } from '../types/R
 
 const RadioTextComponent = ( {questionTitle} :IRadioTextComponent ) => {
     return (
-        <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>{ questionTitle }</Typography>
+        <Typography variant="h5" display="block" gutterBottom>{ questionTitle }</Typography>
     )
 }
 
 const RadioFormComponent = ({formLabelList, value, handleRadioState}:IRadioFormComponent)=>{    
         return (
-        <RadioGroup value={value} onChange={(e)=> { handleRadioState(e.target.value)} } style={{ padding: "10px" }}>
+        <RadioGroup style={{marginTop: "-8px"}} value={value} onChange={(e)=> { handleRadioState(e.target.value)} }>
             {
                 formLabelList.map((item,index)=>(
                     <FormControlLabel key={index} value={item} control={<Radio />} label={item} />

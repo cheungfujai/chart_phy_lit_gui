@@ -9,6 +9,7 @@ import { RootState } from '../store/reducer';
 import { setCandidate } from '../store/actions/QuestionActions';
 import { Candidate } from '../types/store/QuestionStore';
 import { routes } from '../App';
+import { Container } from '@material-ui/core';
 
 export default function Page2() {
     const dispatch = useDispatch();
@@ -18,10 +19,9 @@ export default function Page2() {
     const [maritalStatus,setMaritalStatus] = useState<string>(candidate.maritalStatus);
     const [activity,setActivity] = useState<string>(candidate.activity);
 
-    const educationFormLabelList = ["Secondary 3" ,"HKDSE (Secondary 6)", "Foundation degree","Bachelor's degree", "Master's degree","Doctorate's degree" ];
-    const maritalStatusFormLabelList = ["Married", "Widowed", "Divorced", "Separated", "Never married"];
+    const educationFormLabelList = ["Illiterate", "Primary school", "Secondary school", "Vocational degree", "Foundation degree", "Bachelor's degree", "Master's degree", "Doctorate"];
+    const maritalStatusFormLabelList = ["Married", "Widowed", "Divorced", "Separated", "Single"];
     const activityFormLabelList = ["Jogging", "Fitness", "Individual sports", "Racket sports", "Team sports", "Water sports","Other"];
-
 
     const onPageChange = () => {
         const newCandidate:Candidate = {
@@ -36,16 +36,19 @@ export default function Page2() {
     }
     
     return (
-        <Box color="text.primary" style={{ padding: "20px", }}>
+        <Container maxWidth="sm">
             <RadioForm 
                 questionTitle={"Marital Status"} 
                 value={maritalStatus} 
                 handleRadioState={setMaritalStatus}
-                formLabelList={educationFormLabelList} 
+                formLabelList={maritalStatusFormLabelList} 
                 /> 
-            <RadioForm questionTitle={"Education"} value={education} handleRadioState={setEducation} formLabelList={maritalStatusFormLabelList} /> 
+            <Box m={4} />
+            <RadioForm questionTitle={"Highest Level of Schooling"} value={education} handleRadioState={setEducation} formLabelList={educationFormLabelList} /> 
+            <Box m={4} />
             <RadioForm questionTitle={"Activity"} value={activity} handleRadioState={setActivity} formLabelList={activityFormLabelList} /> 
+            {/* <Box m={4} /> */}
             <ChartPhyButtonGroup  page={routes['/Page2']} onClick={onPageChange} />
-        </Box>
+        </Container>
     );
 }

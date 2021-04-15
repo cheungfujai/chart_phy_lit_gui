@@ -9,18 +9,45 @@ import { Profile } from '../types/store/QuestionStore';
 import { Button, Grid } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { route, routes } from '../App';
+
 import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Slide from '@material-ui/core/Slide';
+import { TransitionProps } from '@material-ui/core/transitions';
+
 import baseRequest from '../functions/api/base';
+
+const Transition = React.forwardRef(function Transition(
+    props: TransitionProps & { children?: React.ReactElement<any, any> },
+    ref: React.Ref<unknown>,
+  ) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
 
 const PageEnd = () => {
     const questionState = useSelector((state: RootState) => state.question);
     const dispatch = useDispatch();
     const history = useHistory();
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     
     const onSubmit = async () => {
         ///TODO after user ok for submit then router push to result page
-        alert("Are your sure ? After Submit you cannot change any answer.")
+        // alert("Are your sure ? After Submit you cannot change any answer.")
         const titleList:ITitle[] = mapQuestionAnswerToTitle(questionState.question,questionState.answer);
         
         const candidate:ICreateCandidateRequest = {
@@ -52,25 +79,47 @@ const PageEnd = () => {
     }
 
     return (
-        <>
-        <Box>
-        <Typography variant="h6" align="center" gutterBottom style={{ padding: "10px", paddingTop: "20px" }}>You are nearly finished!</Typography>
-        <Typography variant="body1" align="center" gutterBottom style={{ padding: "10px" }}> Please Submit your result</Typography>
-        
-        <div style={{flexGrow: 1,display:"flex"}}>
-        <Grid item xs={6}>
-        <Button variant="contained" color="primary" size="large" style={{ margin: "auto", display: "block", alignItems: "center"}}
-            onClick = {()=>previousPage()} > Previous
-        </Button>
-        </Grid>
-        <Grid item xs={6}>
-        <Button variant="contained" color="primary" size="large" style={{ margin: "auto", display: "block", alignItems: "center"}}
-            onClick = {()=>onSubmit()} > Submit
-        </Button>
-        </Grid>
-        </div>
-        </Box>
-        </>
+        <Container maxWidth="sm">
+            <Typography variant="h6" align="center" gutterBottom style={{ padding: "10px", paddingTop: "20px" }}>You are nearly finished!</Typography>
+            <Typography variant="body1" align="center" gutterBottom style={{ padding: "10px" }}> Please Submit your result</Typography>
+            
+            <div style={{width: "100%"}}>
+                <Button 
+                    variant="outlined" color="primary" size="small" 
+                    style={{float:"left", marginTop: "32px", marginBottom: "64px", minWidth: "160px", display: "block", alignItems: "center"}}
+                    onClick = {()=>previousPage()} > Previous
+                </Button>
+                <Button 
+                    variant="outlined" color="primary" size="small" 
+                    style={{float:"right", marginTop: "32px", marginBottom: "64px", minWidth: "160px", display: "block", alignItems: "center"}}
+                    onClick={handleClickOpen} > Submit
+                </Button>
+            </div>
+
+            <Dialog
+                open={open}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-slide-title"
+                aria-describedby="alert-dialog-slide-description"
+            >
+                <DialogTitle id="alert-dialog-slide-title">{"Are your sure ? "}</DialogTitle>
+                <DialogContent>
+                <DialogContentText id="alert-dialog-slide-description">
+                    After Submit you cannot change any answer.
+                </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                <Button onClick={onSubmit} color="secondary">
+                    Yes
+                </Button>
+                <Button onClick={handleClose} color="secondary">
+                    No
+                </Button>
+                </DialogActions>
+            </Dialog>
+        </Container>
     )
 }
 

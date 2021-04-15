@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCandidate } from '../store/actions/QuestionActions';
 import { RootState } from '../store/reducer';
 import { routes } from '../App';
+import { Container } from '@material-ui/core';
 
 export default function Starter() {
     const history = useHistory();
@@ -70,31 +71,37 @@ export default function Starter() {
     }
 
     return (
-        <Box color="text.primary" style={{ padding: "20px", }}>
-            
-            <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Gender</Typography>
-            <RadioGroup aria-label="gender" value={gender} onChange={handleGenderChange} style={{ padding: "10px" }}>
+        <Container maxWidth="sm">
+            <Typography variant="h5" display="block" gutterBottom >Gender</Typography>
+            <RadioGroup color="primary" aria-label="gender" value={gender} onChange={handleGenderChange} style={{marginTop: "-8px"}}>
                 <FormControlLabel value="female" control={<Radio />} label="Female" />
                 <FormControlLabel value="male" control={<Radio />} label="Male" />
             </RadioGroup>
 
-            <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Age</Typography>
-            <TextField id="outlined-basic" label="Age" type="number" variant="outlined" defaultValue={age} onChange={(e)=>setAge(+e.target.value)} />
+            <Box m={4} />
 
-            <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Height</Typography>
-            <TextField id="outlined-basic" label="Height"type="number"  variant="outlined" defaultValue={height} onChange={(e)=>setHeight(+e.target.value)}/>
+            <Typography variant="h5" display="block" gutterBottom >Age</Typography>
+            <TextField id="outlined-basic" type="number" variant="outlined" defaultValue={age} onChange={(e)=>setAge(+e.target.value)} />
 
-            <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Weight</Typography>
-            <TextField id="outlined-basic" label="Weight"type="number"  variant="outlined" defaultValue={weight} onChange={(e)=>setWeight(+e.target.value)}/>
+            <Box m={4} />
 
-            <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Nationality</Typography>
-            <FormControl variant="outlined" fullWidth>
-                <InputLabel id="demo-simple-select-outlined-label">Nationality</InputLabel>
+            <Typography variant="h5" display="block" gutterBottom >Height (cm)</Typography>
+            <TextField id="outlined-basic" type="number"  variant="outlined" defaultValue={height} onChange={(e)=>setHeight(+e.target.value)}/>
+
+            <Box m={4} />
+
+            <Typography variant="h5" display="block" gutterBottom >Weight (KG)</Typography>
+            <TextField id="outlined-basic" type="number"  variant="outlined" defaultValue={weight} onChange={(e)=>setWeight(+e.target.value)}/>
+
+            <Box m={4} />
+
+            <Typography variant="h5" display="block" gutterBottom >Nationality</Typography>
+            <TextField id="outlined-basic" type="text"  variant="outlined" defaultValue={nationality} onChange={handleNationalityChange}/>
+            {/* <FormControl variant="outlined" fullWidth>
                 <Select
                     labelId="demo-simple-select-outlined-label"
                     value={nationality}
                     onChange={handleNationalityChange}
-                    label="Nationality"
                 >
                     <MenuItem value={10}>Brazil</MenuItem>
                     <MenuItem value={20}>China</MenuItem>
@@ -104,16 +111,16 @@ export default function Starter() {
                     <MenuItem value={60}>The United Kingdom</MenuItem>
                     <MenuItem value={70}>The United States of America</MenuItem>
                 </Select>
-            </FormControl>
+            </FormControl> */}
 
-            <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>Ethnicity</Typography>
-            <FormControl variant="outlined" fullWidth >
-                <InputLabel id="demo-simple-select-outlined-label">Ethnicity</InputLabel>
+            <Box m={4} />
+
+            {/* <Typography variant="h5" display="block" gutterBottom >Ethnicity</Typography> */}
+            {/* <FormControl variant="outlined" fullWidth >
                 <Select
                     labelId="demo-simple-select-outlined-label"
                     value={ethnicity}
                     onChange={handleEthnicityChange}
-                    label="Ethnicity"
                 >
                     <MenuItem value={10}>American Indian or Alaska Native</MenuItem>
                     <MenuItem value={20}>Asian</MenuItem>
@@ -123,11 +130,12 @@ export default function Starter() {
                     <MenuItem value={60}>White</MenuItem>
                     <MenuItem value={70}>Other</MenuItem>
                 </Select>
-            </FormControl>
+            </FormControl> */}
             
+            {/* <Box m={4} /> */}
             
             <ChartPhyButton type="next" page={routes['/Starter']} onClick={nextPage} />
 
-        </Box>
+        </Container>
     );
 }

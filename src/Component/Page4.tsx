@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import Container from '@material-ui/core/Container';
 import RadioForm from './RadioForm';
 import ChartPhyButtonGroup from './ChartPhyButton';
 import { useDispatch, useSelector } from 'react-redux';
@@ -31,8 +32,8 @@ export default function Page4() {
     }
 
     const sortParticipationFormLabelList = [
-        "Active starts","Fundamentals","Learn to train","Train to train","Train to compete",
-        "Train to win","Competitive for life","Fit for life","Active for life"]
+        "National Representative", "National (Junior) Representative", "University/ College Representative", "Secondary School/ High School Representative", "Recreation and Leisure", "No experience"
+    ]
     
     const employmentFormLabelList = [
         "Employed full time","Employed part time","Unemployed looking for work",
@@ -55,22 +56,25 @@ export default function Page4() {
         dispatch(setCandidate(newCandidate));
     }
     return (
-        <Box color="text.primary" style={{ padding: "20px", }}>
-            <Typography variant="h6" display="block" gutterBottom style={{ padding: "10px" }}>How much time did you usually spend doing any kinds of physical activities on one of those days (in hours and minutes, e.g. 2 hours and 30 minutes)?</Typography>
+        <Container maxWidth="md">
+            <Typography variant="h6" display="block" gutterBottom >How much time did you usually spend doing any kinds of physical activities on one of those days (in hours and minutes, e.g. 2 hours and 30 minutes)?</Typography>
             <TextField 
                 id="outlined-basic" 
                 defaultValue={durationDaysActivity}
                 onChange={(e)=>setDurationDaysActivity(e.target.value)}
-                style={{padding: "20px", paddingBottom: "30px" }} 
                 variant="outlined" 
             />
-        
+
+            <Box m={2}/>
+
             <RadioForm 
                 questionTitle={"Highest level of sports participation"} 
                 value={sportParticipation} 
                 handleRadioState={handleSportParticipationChange}
                 formLabelList={sortParticipationFormLabelList} 
                 /> 
+
+            <Box m={2}/>
 
             <RadioForm 
                 questionTitle={"Employment"} 
@@ -79,14 +83,18 @@ export default function Page4() {
                 formLabelList={employmentFormLabelList} 
                 /> 
 
+            <Box m={2}/>
+
             <RadioForm 
-                questionTitle={"YearlyFamilyIncome"} 
+                questionTitle={"Yearly Family Income (in USD)"} 
                 value={yearlyFamilyIncome} 
                 handleRadioState={handleYearlyFamilyIncomeChange}
                 formLabelList={yearlyFamilyIncomeFormLabelList} 
                 /> 
 
+            <Box m={2}/>
+
             <ChartPhyButtonGroup  page={routes['/Page4']} onClick={onPageChange} />
-        </Box>
+        </Container>
     );
 }

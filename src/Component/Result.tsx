@@ -1,5 +1,5 @@
 import React, { Component, useEffect } from 'react';
-import { Button, Grid } from '@material-ui/core';
+import { Button, Container } from '@material-ui/core';
 import RadarChart from '../Component/Chart/RadarChart/RadarChart';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
@@ -13,8 +13,8 @@ export default function Result() {
         localStorage.clear();
     })
     return (   
-        <>
-        <RadarChart receivedScore={profile}/>
-        </>
+        <Container maxWidth="md">
+            <RadarChart receivedScore={profile}/>
+        </Container>
     );
 }
