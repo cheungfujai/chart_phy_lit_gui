@@ -13,7 +13,7 @@ export default function Result() {
         localStorage.clear();
     })
     return (   
-        <Container maxWidth="md">
+        <Container maxWidth="lg">
             <RadarChart receivedScore={profile}/>
         </Container>
     );

@@ -51,7 +51,8 @@
   "react-dotenv": {
     "whitelist": [
       "API_URL",
-      "API_KEY"
+      "API_KEY",
+      "MODE"
     ]
   },
   "devDependencies": {

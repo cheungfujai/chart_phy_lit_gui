@@ -1,5 +1,6 @@
 import React, { Children, Component, useState ,useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import env from 'react-dotenv';
 import Box from '@material-ui/core/Box';
 
 import RadioQuestionnaireTemplate from './RadioQuestionnaireTemplate';
@@ -27,6 +28,7 @@ const globalPage = 5;
 const RadioQuestionnairePage  = () => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const mode = env.MODE
 
     const {question,answer,questionPerPage} = useSelector((state: RootState) => state.question);
 
@@ -69,9 +71,20 @@ const RadioQuestionnairePage  = () => {
 
     }
 
+    const DEBUG_FillAllAnswer = () => {
+        const a  = [...Array(60)].map((value, index)=>{ return 1 });
+        dispatch(setAnswer(a)); 
+        console.log(a);
+        setValue(a.slice(begin,end)); 
+    }
    
     return (
         <Container maxWidth="lg">
+            <Box display={mode === "staging" ? "block" : "none"}>
+                <Button onClick={DEBUG_FillAllAnswer} variant="outlined" color="primary" size="small" > Fill </Button>
+                <h3>{answer}</h3>
+            </Box>
+
             <RadioQuestionnaireTemplate 
                 rowQuestionList={rowQuestionList} 
                 columnAttributeList={columnAttributeList}
@@ -96,7 +109,6 @@ const RadioQuestionnairePage  = () => {
                     Next 
                 </Button>
             </div>
-
         </Container>
  
     ) ;
