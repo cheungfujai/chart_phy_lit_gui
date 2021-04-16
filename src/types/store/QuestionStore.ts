@@ -36,6 +36,7 @@ export interface Answer {
 export interface Candidate {
     gender:string,
     age:number|null,
+    measureUnit:number|null,
     height:number|null,
     weight:number|null,
     nationality:string,
@@ -43,6 +44,7 @@ export interface Candidate {
     maritalStatus:string,
     education:string,
     activity:string,
+    otherActivity:string,
     durationDaysActivity:string,
     daysActivity:number,
     sportLevel:string,

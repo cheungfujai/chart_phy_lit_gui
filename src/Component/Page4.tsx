@@ -57,6 +57,7 @@ export default function Page4() {
     }
     return (
         <Container maxWidth="md">
+            <Box display={candidate.daysActivity > 0 ? "block" : "none"}>
             <Typography variant="h6" display="block" gutterBottom >How much time did you usually spend doing any kinds of physical activities on one of those days (in hours and minutes, e.g. 2 hours and 30 minutes)?</Typography>
             <TextField 
                 id="outlined-basic" 
@@ -64,8 +65,9 @@ export default function Page4() {
                 onChange={(e)=>setDurationDaysActivity(e.target.value)}
                 variant="outlined" 
             />
-
             <Box m={2}/>
+            </Box>
+
 
             <RadioForm 
                 questionTitle={"Highest level of sports participation"} 

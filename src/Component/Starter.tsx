@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
+import RadioForm from '@material-ui/core/TextField';
 import ChartPhyButton from './ChartPhyButton';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,6 +31,15 @@ export default function Starter() {
     }
 
     const [age, setAge] = useState<number>(candidate.age);
+
+    const [measureUnit, setMeasureUnit] = useState<number>(candidate.measureUnit);
+    const handleMeasureUnitChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setMeasureUnit(parseInt(event.target.value));
+    }
+    const measureUnitValue = [
+        { mass: "kg", _length: "cm" },
+        { mass: "lb", _length: "ft" }
+    ]
 
     const [height, setHeight] = useState<number>(candidate.height);
     const handleHeightChange = (h: number) => {
@@ -60,6 +70,7 @@ export default function Starter() {
             ...candidate,
             gender:gender,
             age:age,
+            measureUnit:measureUnit,
             weight:weight,
             height:height,
             nationality:nationality,
@@ -85,12 +96,20 @@ export default function Starter() {
 
             <Box m={4} />
 
-            <Typography variant="h5" display="block" gutterBottom >Height (cm)</Typography>
+            <Typography variant="h5" display="block" gutterBottom >Measure Unit</Typography>
+            <RadioGroup color="primary" aria-label="measureUnit" value={measureUnit} onChange={handleMeasureUnitChange} style={{marginTop: "-8px"}}>
+                <FormControlLabel value={0} control={<Radio />} label="Metric (cm/kg)" />
+                <FormControlLabel value={1} control={<Radio />} label="Imperial (ft/lb)" />
+            </RadioGroup>
+
+            <Box m={4} />
+
+            <Typography variant="h5" display="block" gutterBottom >Height ({measureUnitValue[measureUnit]._length})</Typography>
             <TextField id="outlined-basic" type="number"  variant="outlined" defaultValue={height} onChange={(e)=>setHeight(+e.target.value)}/>
 
             <Box m={4} />
 
-            <Typography variant="h5" display="block" gutterBottom >Weight (KG)</Typography>
+            <Typography variant="h5" display="block" gutterBottom >Weight ({measureUnitValue[measureUnit].mass})</Typography>
             <TextField id="outlined-basic" type="number"  variant="outlined" defaultValue={weight} onChange={(e)=>setWeight(+e.target.value)}/>
 
             <Box m={4} />

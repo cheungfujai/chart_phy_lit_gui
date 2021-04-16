@@ -8,6 +8,7 @@ const initialState: QuestionState = {
     candidate:{
         gender:"",
         age:null,
+        measureUnit: 0,
         height:null,
         weight:null,
         nationality:"",
@@ -15,6 +16,7 @@ const initialState: QuestionState = {
         maritalStatus:"",
         education:"",
         activity:"",
+        otherActivity:"",
         daysActivity:3,
         durationDaysActivity:"",
         sportLevel:"",
