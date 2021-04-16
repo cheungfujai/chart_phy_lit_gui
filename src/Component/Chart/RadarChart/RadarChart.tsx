@@ -113,7 +113,7 @@ export default  function RadarChart  (receivedScore){
                         var level = "";
                         Object.keys(levelThreshold).map((e, i) => {
                             var score = data['datasets'][0]['data'][tooltipItem['index']];
-                            if(parseInt(score) <= parseInt(e))
+                            if(parseInt(score) <= parseInt(e) && level === "")
                             {
                                 level = levelThreshold[e];
                             }
