@@ -22,6 +22,7 @@ import Slide from '@material-ui/core/Slide';
 import { TransitionProps } from '@material-ui/core/transitions';
 
 import baseRequest from '../functions/api/base';
+import ProgressBar from './ProgressBar';
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & { children?: React.ReactElement<any, any> },
@@ -80,6 +81,8 @@ const PageEnd = () => {
 
     return (
         <Container maxWidth="sm">
+            <ProgressBar value="100"/>
+
             <Typography variant="h6" align="center" gutterBottom style={{ padding: "10px", paddingTop: "20px" }}>You are nearly finished!</Typography>
             <Typography variant="body1" align="center" gutterBottom style={{ padding: "10px" }}> Please Submit your result</Typography>
             

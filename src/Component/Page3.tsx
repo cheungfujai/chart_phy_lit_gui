@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
 import { setCandidate } from '../store/actions/QuestionActions';
 import { routes } from '../App';
+import ProgressBar from './ProgressBar';
 
 export default function Page3() {
     const dispatch = useDispatch();
@@ -45,7 +46,9 @@ export default function Page3() {
     }
     return (
         <Container maxWidth="sm">
-            <Typography id="discrete-slider" gutterBottom> During the last 7 days, on how many days did you do any kinds of physical activities? </Typography>
+            <ProgressBar value="30"/>
+
+            <Typography id="discrete-slider" gutterBottom> During the last 7 days, on how many days did you do any kind of physical activities? </Typography>
             <Slider 
                 style={{width: "200", paddingTop: "30px"}}
                 defaultValue={daysActivity}

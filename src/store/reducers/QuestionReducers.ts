@@ -15,10 +15,10 @@ const initialState: QuestionState = {
         ethnicity:"",
         maritalStatus:"",
         education:"",
-        activity:"",
+        activity:[false, false, false, false, false, false, false],
         otherActivity:"",
         daysActivity:3,
-        durationDaysActivity:"",
+        durationDaysActivity:[],
         sportLevel:"",
         employment:"",
         yearlyFamilyIncome:""

@@ -9,12 +9,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
 import { setCandidate } from '../store/actions/QuestionActions';
 import { routes } from '../App';
+import ProgressBar from './ProgressBar';
 
 export default function Page4() {
     const dispatch = useDispatch();
     const {candidate} = useSelector((state: RootState) => state.question);
 
-    const [durationDaysActivity, setDurationDaysActivity] = useState<string>(candidate.durationDaysActivity);
+    const [durationDaysActivity, setDurationDaysActivity] = useState<number[]>(candidate.durationDaysActivity);
+    const handleDurationDaysActivity = (value, which) => {
+        const buffer = [...durationDaysActivity];
+        buffer[which] = value;
+        setDurationDaysActivity(buffer);
+    }
+
 
     const [sportParticipation, setSportParticipation] = useState<string>(candidate.sportLevel);
     const handleSportParticipationChange = (value:string) => {
@@ -57,13 +64,26 @@ export default function Page4() {
     }
     return (
         <Container maxWidth="md">
+            <ProgressBar value="40"/>
+
             <Box display={candidate.daysActivity > 0 ? "block" : "none"}>
-            <Typography variant="h6" display="block" gutterBottom >How much time did you usually spend doing any kinds of physical activities on one of those days (in hours and minutes, e.g. 2 hours and 30 minutes)?</Typography>
+            <Typography variant="h6" display="block" gutterBottom >
+                On an average day, how much time do you spend doing physical activities?
+            </Typography>
             <TextField 
                 id="outlined-basic" 
-                defaultValue={durationDaysActivity}
-                onChange={(e)=>setDurationDaysActivity(e.target.value)}
+                defaultValue={durationDaysActivity[0]}
+                onChange={(e)=>handleDurationDaysActivity(e.target.value, 0)}
                 variant="outlined" 
+                placeholder="Hours"
+            />
+            <TextField 
+                id="outlined-basic" 
+                defaultValue={durationDaysActivity[1]}
+                onChange={(e)=>handleDurationDaysActivity(e.target.value, 1)}
+                variant="outlined" 
+                placeholder="Minutes"
+                style={{marginLeft: "16px"}}
             />
             <Box m={2}/>
             </Box>

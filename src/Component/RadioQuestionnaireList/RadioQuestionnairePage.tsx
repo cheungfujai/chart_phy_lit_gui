@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import { Button } from '@material-ui/core';
 import { route, routes } from '../../App';
+import ProgressBar from '../ProgressBar';
 
 const columnAttributeList:string[] = [
     "Not at all like me",
@@ -41,6 +42,7 @@ const RadioQuestionnairePage  = () => {
     let end:number = getEndIndex(page);
     const rowQuestionList:string[] = question.slice(begin,end).map((item)=>item.title);
     const [value, setValue] = React.useState<any []>(answer.slice(begin,end));
+    const [progress, setProgress] = React.useState<number>(50);
 
 
     const onPageStateChange = (pageNumber:number) =>{
@@ -62,6 +64,7 @@ const RadioQuestionnairePage  = () => {
         const nextPage = (type==="next") ? page+1:page-1;
         onPageStateChange(nextPage);
         console.log(nextPage);
+        setProgress(progress + ((type==="next") ? 10:-10))
         if( type==="previous" && page === 0  ){
             history.push(route[Math.max(routes['/Page4'],0)]);
         }
@@ -80,6 +83,8 @@ const RadioQuestionnairePage  = () => {
    
     return (
         <Container maxWidth="lg">
+            <ProgressBar value={progress}/>
+
             <Box display={mode === "staging" ? "block" : "none"}>
                 <Button onClick={DEBUG_FillAllAnswer} variant="outlined" color="primary" size="small" > Fill </Button>
                 <h3>{answer}</h3>

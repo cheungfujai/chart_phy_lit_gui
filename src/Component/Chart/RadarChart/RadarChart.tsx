@@ -32,6 +32,7 @@ export default  function RadarChart  (receivedScore){
         // 57: "Maximising"
         1000: "Maximising"
     }
+    const levelThresholdName = ["", "Unaware", "Exploring", "Developing", "Consolidating", "Maximising", ""]
 
     // change receivedScore from object into array
     
@@ -131,9 +132,12 @@ export default  function RadarChart  (receivedScore){
                 },
                 scale: {
                     ticks: {
+                        callback: function(value, index, values) {
+                            return `${levelThresholdName[index]} (${value})`;
+                        },
                         min:0,
-                        suggestedMin: 15,
-                        suggestedMax: 50,
+                        // suggestedMin: -,
+                        suggestedMax: 57,
                         stepSize: 10,
                     },
                     pointLabels: {

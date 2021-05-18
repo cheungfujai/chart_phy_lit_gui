@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 
+import ProgressBar from "./ProgressBar"
 import Box from '@material-ui/core/Box';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -83,6 +84,8 @@ export default function Starter() {
 
     return (
         <Container maxWidth="sm">
+            <ProgressBar value="0"/>
+
             <Typography variant="h5" display="block" gutterBottom >Gender</Typography>
             <RadioGroup color="primary" aria-label="gender" value={gender} onChange={handleGenderChange} style={{marginTop: "-8px"}}>
                 <FormControlLabel value="female" control={<Radio />} label="Female" />
