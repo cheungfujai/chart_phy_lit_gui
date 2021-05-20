@@ -12,16 +12,16 @@ import { useHistory } from 'react-router-dom';
 Chart.defaults.global.legend.display = false;
 
 const updateScore = (oriScore:Profile):number[]=>{
-    return Object.values(oriScore).map(v => v+2);
+    return Object.values(oriScore).map(v => v+3);
 }
 
 export default  function RadarChart  (receivedScore){   
     const history = useHistory();
     // received score
     const receivedScoreTest: Profile = {
-        motivation: 10,
+        motivation: 34,
         confidence: 22,
-        competence: 34,
+        competence: 46,
         knowledge: 57 
     };
     const levelThreshold = {
@@ -66,8 +66,8 @@ export default  function RadarChart  (receivedScore){
       
     useEffect(() =>{
         // console.log(receivedScore);
-        const finalScore: number[] = updateScore(receivedScore.receivedScore);
-        // const finalScore: number[] = updateScore(receivedScoreTest);
+        // const finalScore: number[] = updateScore(receivedScore.receivedScore);
+        const finalScore: number[] = updateScore(receivedScoreTest);
         // console.log("hi" + finalScore);
 
         const backgroundGradient = ['#667db67A','#0082c87A','#0082c87A','#0082c87A']
@@ -119,7 +119,7 @@ export default  function RadarChart  (receivedScore){
                                 level = levelThreshold[e];
                             }
                         })
-                        return `${level} (${data['datasets'][0]['data'][tooltipItem['index']]-2})`;
+                        return `${level} (${data['datasets'][0]['data'][tooltipItem['index']]-3})`;
                       },
                     },
                     backgroundColor: '#FFFFFF7A',
@@ -136,8 +136,9 @@ export default  function RadarChart  (receivedScore){
                             return `${levelThresholdName[index]} (${value-2})`;
                         },
                         min:0,
+                        max:59,
                         // suggestedMin: -,
-                        suggestedMax: 60,
+                        // suggestedMax: 57,
                         stepSize: 12,
                     },
                     pointLabels: {
