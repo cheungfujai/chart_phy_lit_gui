@@ -12,7 +12,7 @@ import { useHistory } from 'react-router-dom';
 Chart.defaults.global.legend.display = false;
 
 const updateScore = (oriScore:Profile):number[]=>{
-    return Object.values(oriScore);
+    return Object.values(oriScore).map(v => v+2);
 }
 
 export default  function RadarChart  (receivedScore){   
@@ -20,19 +20,19 @@ export default  function RadarChart  (receivedScore){
     // received score
     const receivedScoreTest: Profile = {
         motivation: 10,
-        confidence: 20,
-        competence: 55,
-        knowledge: 20  
+        confidence: 22,
+        competence: 34,
+        knowledge: 57 
     };
     const levelThreshold = {
         9: "Unaware",
-        23: "Exploring",
+        21: "Exploring",
         33: "Developing",
         45: "Consolidating",
         // 57: "Maximising"
         1000: "Maximising"
     }
-    const levelThresholdName = ["", "Unaware", "Exploring", "Developing", "Consolidating", "Maximising", ""]
+    const levelThresholdName = ["", "Exploring", "Developing", "Consolidating", "Maximising", ""]
 
     // change receivedScore from object into array
     
@@ -119,7 +119,7 @@ export default  function RadarChart  (receivedScore){
                                 level = levelThreshold[e];
                             }
                         })
-                        return level + ' (' + data['datasets'][0]['data'][tooltipItem['index']] + ')';
+                        return `${level} (${data['datasets'][0]['data'][tooltipItem['index']]-2})`;
                       },
                     },
                     backgroundColor: '#FFFFFF7A',
@@ -133,12 +133,12 @@ export default  function RadarChart  (receivedScore){
                 scale: {
                     ticks: {
                         callback: function(value, index, values) {
-                            return `${levelThresholdName[index]} (${value})`;
+                            return `${levelThresholdName[index]} (${value-2})`;
                         },
                         min:0,
                         // suggestedMin: -,
-                        suggestedMax: 57,
-                        stepSize: 10,
+                        suggestedMax: 60,
+                        stepSize: 12,
                     },
                     pointLabels: {
                         fontSize: 16,
