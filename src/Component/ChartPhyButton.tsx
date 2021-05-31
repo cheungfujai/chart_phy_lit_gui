@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
 import {route} from '../App';
 import Grid from '@material-ui/core/Grid';
-import { Box } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 
 
 interface IChartPhyButton{
@@ -43,6 +43,9 @@ export default function ChartPhyButtonGroup  ({ page, onClick ,type="both"}:ICha
                 <ChartPhyButton style={{float:"right"}} type="next" page={page} onClick={onClick} />
             </div>
         }
+        <Typography variant="caption" display="block" style={{marginTop: "-48px", float:"left", clear:"both", textAlign:"center",width:"100%"}} >
+            Powered by The Chinese University of Hong Kong 2021 
+        </Typography>
         </>
     )
 }

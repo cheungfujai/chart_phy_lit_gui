@@ -99,6 +99,10 @@ const PageEnd = () => {
                 </Button>
             </div>
 
+            <Typography variant="caption" display="block" style={{marginTop: "-48px", float:"left", clear:"both", textAlign:"center",width:"100%"}} >
+                Powered by The Chinese University of Hong Kong 2021 
+			</Typography>
+
             <Dialog
                 open={open}
                 TransitionComponent={Transition}

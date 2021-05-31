@@ -11,7 +11,7 @@ import { useHistory } from 'react-router-dom';
 import { RootState } from '../../store/reducer';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-import { Button } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import { route, routes } from '../../App';
 import ProgressBar from '../ProgressBar';
 
@@ -114,6 +114,10 @@ const RadioQuestionnairePage  = () => {
                     Next 
                 </Button>
             </div>
+
+            <Typography variant="caption" display="block" style={{marginTop: "-48px", float:"left", clear:"both", textAlign:"center",width:"100%"}} >
+                Powered by The Chinese University of Hong Kong 2021 
+			</Typography>
         </Container>
  
     ) ;

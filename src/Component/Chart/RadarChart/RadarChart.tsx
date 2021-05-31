@@ -4,7 +4,7 @@ import classes from './RadarChart.module.css';
 import { Profile } from '../../../types/store/QuestionStore';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/reducer';
-import { Box, Button } from '@material-ui/core';
+import { Box, Button, Typography } from '@material-ui/core';
 import { Fade } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 
@@ -66,8 +66,8 @@ export default  function RadarChart  (receivedScore){
       
     useEffect(() =>{
         // console.log(receivedScore);
-        // const finalScore: number[] = updateScore(receivedScore.receivedScore);
-        const finalScore: number[] = updateScore(receivedScoreTest);
+        const finalScore: number[] = updateScore(receivedScore.receivedScore);
+        // const finalScore: number[] = updateScore(receivedScoreTest);
         // console.log("hi" + finalScore);
 
         const backgroundGradient = ['#667db67A','#0082c87A','#0082c87A','#0082c87A']
@@ -168,6 +168,10 @@ export default  function RadarChart  (receivedScore){
                     <Box mt={2} style={{textAlign: "center"}}>
                         <Button onClick={() => {history.push("/")}} style={{minWidth: "160px"}} variant="outlined" color="primary" size="small" > Back to start </Button>
                     </Box>
+
+                    <Typography variant="caption" display="block" style={{marginTop: "12px", textAlign:"center",width:"100%"}} >
+                        Powered by The Chinese University of Hong Kong 2021 
+                    </Typography>
                 </Box>
             </div>
         </Fade>
