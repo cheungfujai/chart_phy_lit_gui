@@ -35,7 +35,8 @@ const RadioButtonRow = ({columnAttributeList,rowQuestion,rowIndex,value,setValue
 const RadioQuestionnaireTemplate = ({rowQuestionList,columnAttributeList,value,setValue}:IRadioQuestionnaireTemplate) =>{
     const tableStyle:React.CSSProperties = {
         borderCollapse: "separate",
-        borderSpacing: "0 32px"
+        borderSpacing: "0 32px",
+        width: "100%"
     }
 
     return (
